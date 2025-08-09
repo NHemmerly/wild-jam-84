@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfax6ll71a766"]
+
+[ext_resource type="Script" uid="uid://b2ou42aecpbgp" path="res://menus/settings.gd" id="1_urrvo"]
+
+[node name="Settings" type="Node2D"]
+script = ExtResource("1_urrvo")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_left = 104.0
+offset_top = 40.0
+offset_right = 174.0
+offset_bottom = 141.0
+scale = Vector2(6.02885, 3.13368)
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back
+"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
