@@ -17,3 +17,5 @@ mono_crash.*.json
 
 # Client-side addons
 godot-git-plugin/
+
+CruS/
