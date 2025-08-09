@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcsupn0ux1fcf"]
+
+[ext_resource type="Script" uid="uid://c6uhfw72u8eh1" path="res://utility/state_machine.gd" id="1_tpake"]
+
+[node name="state_machine" type="Node2D"]
+script = ExtResource("1_tpake")
+
+[node name="main_menu" type="Node2D" parent="."]
+
+[node name="in_game" type="Node2D" parent="."]
+
+[node name="start_menu" type="Node2D" parent="."]
