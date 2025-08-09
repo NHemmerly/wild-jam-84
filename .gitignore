@@ -17,3 +17,6 @@ mono_crash.*.json
 
 # Client-side addons
 godot-git-plugin/
+
+# Ignore large media files
+CruS/

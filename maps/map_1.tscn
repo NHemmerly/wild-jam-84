@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://ietxikl42ld4"]
+
+[ext_resource type="Texture2D" uid="uid://cuqsm52f73aus" path="res://assets/terrarium-background-temp.png" id="1_p5fey"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5fey"]
+size = Vector2(1922, 117)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bbd8t"]
+size = Vector2(95, 433)
+
+[node name="map1" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_p5fey")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-4, 630, 287, 465, 1629, 462, 1921, 627, 1919, 2, 0, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(961, 1063)
+shape = SubResource("RectangleShape2D_p5fey")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-28, 813)
+shape = SubResource("RectangleShape2D_bbd8t")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1943, 824)
+shape = SubResource("RectangleShape2D_bbd8t")
+
+[node name="spawn" type="Node2D" parent="."]
+position = Vector2(945, 846)
