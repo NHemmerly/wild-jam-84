@@ -32,8 +32,3 @@ mouse_cursor/tooltip_position_offset=Vector2(0, 0)
 [gui]
 
 theme/default_font_multichannel_signed_distance_field=true
-
-[rendering]
-
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
