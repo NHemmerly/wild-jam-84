@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://ietxikl42ld4"]
+[gd_scene load_steps=5 format=3 uid="uid://ietxikl42ld4"]
 
+[ext_resource type="Script" uid="uid://vxr8pfuqx7fk" path="res://maps/map_1.gd" id="1_bbd8t"]
 [ext_resource type="Texture2D" uid="uid://cuqsm52f73aus" path="res://assets/terrarium-background-temp.png" id="1_p5fey"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p5fey"]
@@ -9,6 +10,7 @@ size = Vector2(1922, 117)
 size = Vector2(95, 433)
 
 [node name="map1" type="Node2D"]
+script = ExtResource("1_bbd8t")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1920.0
