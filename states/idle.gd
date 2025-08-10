@@ -6,7 +6,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	critter.wanderCd.start(2)
 
 func physics_update(_delta: float) -> void:
-	critter.scale_size()
+	critter.update()
 	critter.move_and_slide()
 	
 	if critter.timer_done:

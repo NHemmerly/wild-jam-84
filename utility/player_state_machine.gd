@@ -1,22 +1,22 @@
-class_name StateMachine extends State
+class_name PlayerStateMachine extends State
 
 ## The initial state of the state machine. If not set, the first child node is used.
-@export var initial_state: State = null
+@export var initial_state: StateMachine = null
 
 ## The current state of the state machine.
-@onready var state: State = (func get_initial_state() -> State:
+@onready var state: StateMachine = (func get_initial_state() -> StateMachine:
+	print(get_child(0))
 	return initial_state if initial_state != null else get_child(0)
 ).call()
 
 func _ready() -> void:
 	# Give every state a reference to the state machine.
-	for state_node: State in find_children("*", "State"):
+	for state_node: StateMachine in find_children("*", "StateMachine"):
 		state_node.finished.connect(_transition_to_next_state)
 
 	# State machines usually access data from the root node of the scene they're part of: the owner.
 	# We wait for the owner to be ready to guarantee all the data and nodes the states may need are available.
 	await owner.ready
-	
 	state.enter("")
 	
 func _unhandled_input(event: InputEvent) -> void:
@@ -39,4 +39,3 @@ func _transition_to_next_state(target_state_path: String, data: Dictionary = {})
 	state.exit()
 	state = get_node(target_state_path)
 	state.enter(previous_state_path, data)
-	

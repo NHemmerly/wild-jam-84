@@ -14,4 +14,4 @@ func _physics_process(delta: float):
 	
 	#shoot_laser
 	if Input.is_action_just_pressed("click"):
-		shoot_laster()
+		shoot_laster(Vector3.ZERO)

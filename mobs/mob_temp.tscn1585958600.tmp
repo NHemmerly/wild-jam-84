@@ -11,7 +11,10 @@ size = Vector2(128, 128)
 
 [node name="critter" type="CharacterBody2D"]
 script = ExtResource("1_2jubo")
-speed = 0
+speed = null
+start_y = null
+timer_done = null
+hold_position = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7ifc8")
@@ -20,10 +23,6 @@ shape = SubResource("RectangleShape2D_7ifc8")
 texture = ExtResource("1_fjkro")
 
 [node name="Timer" type="Timer" parent="."]
-autostart = true
-
-[node name="status_tickdown" type="Timer" parent="."]
-wait_time = 5.0
 autostart = true
 
 [node name="StateMachine" type="Node" parent="."]
@@ -41,12 +40,9 @@ offset_top = -91.0
 offset_right = 56.0
 offset_bottom = -68.6667
 
-[node name="state_label" type="Label" parent="."]
-offset_left = -63.0
-offset_top = -134.0
-offset_right = 29.0
-offset_bottom = -98.0
+[node name="status_tickdown" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="status_tickdown" to="." method="_on_status_tickdown_timeout"]

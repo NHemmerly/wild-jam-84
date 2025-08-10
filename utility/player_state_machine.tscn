@@ -1,0 +1,45 @@
+[gd_scene load_steps=11 format=3 uid="uid://bh8sxcx6fjsr7"]
+
+[ext_resource type="Script" uid="uid://ckynxgse0kvqq" path="res://utility/player_state_machine.gd" id="1_5c0i7"]
+[ext_resource type="Script" uid="uid://8i4sythrjq7o" path="res://utility/terrarium_state_machine.gd" id="3_kt7lg"]
+[ext_resource type="Script" uid="uid://uewhbn2eyx18" path="res://states/main_menu_state.gd" id="3_rctpp"]
+[ext_resource type="Script" uid="uid://dpe26jkqkt4mn" path="res://utility/explore_state_machine.gd" id="4_csjjf"]
+[ext_resource type="Script" uid="uid://c0uu5tf4pjad6" path="res://states/settings_state.gd" id="4_s26ih"]
+[ext_resource type="Script" uid="uid://si3jga54aq38" path="res://states/feeding_state.gd" id="6_bv8iw"]
+[ext_resource type="Script" uid="uid://c25h2q45v4y80" path="res://states/decorating_state.gd" id="7_wxr1i"]
+[ext_resource type="Script" uid="uid://q3xduscxhmon" path="res://states/nav_state.gd" id="8_dk60m"]
+[ext_resource type="Script" uid="uid://xxxo4vxf5eh5" path="res://states/playing_state.gd" id="9_pj5ql"]
+[ext_resource type="Script" uid="uid://s5bvlapbroco" path="res://states/rover_state.gd" id="10_rctpp"]
+
+[node name="PlayerStateMachine" type="Node"]
+script = ExtResource("1_5c0i7")
+
+[node name="menu" type="Node" parent="."]
+script = ExtResource("3_kt7lg")
+
+[node name="main_menu" type="Node" parent="menu"]
+script = ExtResource("3_rctpp")
+
+[node name="settings" type="Node" parent="menu"]
+script = ExtResource("4_s26ih")
+
+[node name="terrarium" type="Node" parent="."]
+script = ExtResource("3_kt7lg")
+
+[node name="nav" type="Node" parent="terrarium"]
+script = ExtResource("8_dk60m")
+
+[node name="feeding" type="Node" parent="terrarium"]
+script = ExtResource("6_bv8iw")
+
+[node name="decorating" type="Node" parent="terrarium"]
+script = ExtResource("7_wxr1i")
+
+[node name="playing" type="Node" parent="terrarium"]
+script = ExtResource("9_pj5ql")
+
+[node name="explore" type="Node" parent="."]
+script = ExtResource("4_csjjf")
+
+[node name="rover" type="Node" parent="explore"]
+script = ExtResource("10_rctpp")

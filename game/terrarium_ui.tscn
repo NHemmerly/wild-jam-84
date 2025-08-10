@@ -1,0 +1,100 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvyf64e30su4y"]
+
+[ext_resource type="Script" uid="uid://beyn7h6uii0ix" path="res://game/terrarium_ui.gd" id="1_n3l3h"]
+[ext_resource type="Texture2D" uid="uid://c3qxyltkhosl5" path="res://assets/CruS/CruS/Textures/blue_yellow.png" id="1_usdj4"]
+[ext_resource type="Script" uid="uid://4qfpw1jrejys" path="res://game/hotbar.gd" id="2_g8p5x"]
+
+[node name="terrarium_ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_n3l3h")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+mouse_default_cursor_shape = 5
+
+[node name="Hotbar" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 0
+theme_override_constants/separation = 50
+alignment = 1
+script = ExtResource("2_g8p5x")
+
+[node name="slot1" type="Button" parent="MarginContainer/Hotbar"]
+layout_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 3
+icon = ExtResource("1_usdj4")
+icon_alignment = 1
+
+[node name="slot2" type="Button" parent="MarginContainer/Hotbar"]
+layout_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 3
+icon = ExtResource("1_usdj4")
+icon_alignment = 1
+
+[node name="slot3" type="Button" parent="MarginContainer/Hotbar"]
+layout_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 3
+icon = ExtResource("1_usdj4")
+icon_alignment = 1
+
+[node name="slot4" type="Button" parent="MarginContainer/Hotbar"]
+layout_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 3
+icon = ExtResource("1_usdj4")
+icon_alignment = 1
+
+[node name="slot5" type="Button" parent="MarginContainer/Hotbar"]
+layout_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 3
+icon = ExtResource("1_usdj4")
+icon_alignment = 1
+
+[node name="slot6" type="Button" parent="MarginContainer/Hotbar"]
+layout_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 3
+icon = ExtResource("1_usdj4")
+icon_alignment = 1
+
+[node name="slot7" type="Button" parent="MarginContainer/Hotbar"]
+layout_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 3
+icon = ExtResource("1_usdj4")
+icon_alignment = 1
+
+[node name="slot8" type="Button" parent="MarginContainer/Hotbar"]
+layout_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 3
+icon = ExtResource("1_usdj4")
+icon_alignment = 1
+
+[node name="slot9" type="Button" parent="MarginContainer/Hotbar"]
+layout_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 3
+icon = ExtResource("1_usdj4")
+icon_alignment = 1
+
+[connection signal="mouse_entered" from="MarginContainer/Hotbar" to="." method="_on_h_box_container_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Hotbar" to="." method="_on_h_box_container_mouse_exited"]

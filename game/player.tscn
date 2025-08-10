@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctub2dtdq8n2n"]
+
+[ext_resource type="Script" uid="uid://cgpfbvpab1vt6" path="res://game/player.gd" id="1_dadds"]
+[ext_resource type="PackedScene" uid="uid://bh8sxcx6fjsr7" path="res://utility/player_state_machine.tscn" id="2_w5y0b"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_dadds")
+
+[node name="PlayerStateMachine" parent="." instance=ExtResource("2_w5y0b")]
+
+[node name="Label" type="Label" parent="."]
+z_index = 100
+offset_right = 40.0
+offset_bottom = 22.3333
+theme_override_font_sizes/font_size = 48
