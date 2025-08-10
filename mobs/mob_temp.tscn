@@ -1,18 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccwv2t67g0nj4"]
+[gd_scene load_steps=7 format=3 uid="uid://ccwv2t67g0nj4"]
 
-[ext_resource type="Script" uid="uid://cnkipjdmkv8ni" path="res://mobs/character_body_2d.gd" id="1_7ifc8"]
+[ext_resource type="Script" uid="uid://cnkipjdmkv8ni" path="res://mobs/character_body_2d.gd" id="1_2jubo"]
 [ext_resource type="Texture2D" uid="uid://b0grjha0aigqw" path="res://assets/skull2.png" id="1_fjkro"]
+[ext_resource type="Script" uid="uid://caaxlwu28g2nj" path="res://utility/state_machine.gd" id="3_qtnva"]
+[ext_resource type="Script" uid="uid://q3yfh32rnvdk" path="res://states/idle.gd" id="4_w6mpm"]
+[ext_resource type="Script" uid="uid://cui1i2u0ef8ic" path="res://states/wander.gd" id="5_4ik36"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ifc8"]
 size = Vector2(128, 128)
 
-[node name="mob_temp" type="Node2D"]
+[node name="critter" type="CharacterBody2D"]
+script = ExtResource("1_2jubo")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-script = ExtResource("1_7ifc8")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7ifc8")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_fjkro")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_qtnva")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_w6mpm")
+
+[node name="Wander" type="Node" parent="StateMachine"]
+script = ExtResource("5_4ik36")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -54.0
+offset_top = -91.0
+offset_right = 56.0
+offset_bottom = -68.6667
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

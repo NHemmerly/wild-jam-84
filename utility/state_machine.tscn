@@ -1,9 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://bcsupn0ux1fcf"]
 
-[ext_resource type="Script" uid="uid://c6uhfw72u8eh1" path="res://utility/state_machine.gd" id="1_tpake"]
+[sub_resource type="GDScript" id="GDScript_d8b10"]
+script/source = "extends Node2D
+"
 
 [node name="state_machine" type="Node2D"]
-script = ExtResource("1_tpake")
+script = SubResource("GDScript_d8b10")
 
 [node name="main_menu" type="Node2D" parent="."]
 
