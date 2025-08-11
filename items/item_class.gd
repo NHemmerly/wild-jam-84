@@ -9,3 +9,4 @@ class_name Item
 @export var decor: bool
 @export var plaything: bool
 @export var icon: Texture2D
+@export var stackable: bool
