@@ -7,7 +7,12 @@ class_name Player extends Node2D
 var test_item = load("res://items/item.tscn").instantiate()
 
 func _ready() -> void:
-	inventory.items.append(test_item.props)
+	for i in range(inventory.max_size - 1):
+		inventory.items.append(null)
+	inventory.items.append(test_item.item)
+	print(inventory.items[-1])
+	print(inventory.items.size())
+	
 
 func _process(delta: float) -> void:
 	$Label.text = fsm.state.name + ": " + fsm.state.state.name

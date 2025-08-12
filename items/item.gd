@@ -1,3 +1,3 @@
 extends Node2D
 
-@export var props: Item
+@export var item: Item

@@ -5,4 +5,4 @@
 
 [node name="item" type="Node2D"]
 script = ExtResource("1_buahv")
-props = ExtResource("2_k7rtb")
+item = ExtResource("2_k7rtb")

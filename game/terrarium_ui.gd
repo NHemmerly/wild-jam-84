@@ -1,12 +1,11 @@
 extends Control
 
 @export var hotbar: Inventory
-var slot = load("res://items/hotbar_slot.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hotbar = player_state.inventory
-	#fill_hotbar()
+	fill_hotbar()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -14,16 +13,15 @@ func _process(delta: float) -> void:
 	pass
 	
 func fill_hotbar():
-	for item in hotbar.items:
-		var new_item = slot.instantiate()
-		new_item.set_button_icon(item.icon)
-		$MarginContainer/Hotbar.add_child(new_item)
-	var hotbar_size = $MarginContainer/Hotbar.get_children().size()
-	if hotbar_size < player_state.inventory.max_size:
-		for i in range(player_state.inventory.max_size - hotbar_size):
-			var blank_slot = slot.instantiate()
-			$MarginContainer/Hotbar.add_child(blank_slot)
-
+	var i: int = 0
+	var slots = $MarginContainer/Hotbar.get_children()
+	for slot in slots:
+		if player_state.inventory.items[i] != null:
+			print(player_state.inventory.items[i])
+			slot.item = player_state.inventory.items[i]
+		print(slot.item)
+		slot.update()
+		i += 1
 
 
 func _on_h_box_container_mouse_entered() -> void:
