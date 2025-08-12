@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dljjjdpa20b5a"]
+
+[ext_resource type="Texture2D" uid="uid://be6s8u6ydb7px" path="res://assets/CruS/Textures/leaves.png" id="1_yxiwd"]
+[ext_resource type="Script" uid="uid://dgtq1v27v0gt5" path="res://items/item_class.gd" id="2_8apuj"]
+
+[resource]
+script = ExtResource("2_8apuj")
+name = "Trash"
+type = "Toughness"
+food = false
+decor = false
+plaything = true
+icon = ExtResource("1_yxiwd")
+stackable = true
+metadata/_custom_type_script = "uid://dgtq1v27v0gt5"

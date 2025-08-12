@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://duqvnl8esu37x"]
+
+[ext_resource type="Script" uid="uid://dgtq1v27v0gt5" path="res://items/item_class.gd" id="1_283rh"]
+
+[resource]
+script = ExtResource("1_283rh")
+name = "moe's candy"
+type = "Coolness"
+food = false
+decor = false
+plaything = false
+stackable = false
+metadata/_custom_type_script = "uid://dgtq1v27v0gt5"

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bgd4axjppab13"]
+
+[ext_resource type="Script" uid="uid://8ol6djxlqa7d" path="res://testing/critter_res.gd" id="1_nn6xh"]
+
+[resource]
+script = ExtResource("1_nn6xh")
+hunger = 0.0
+strings = PackedStringArray()
