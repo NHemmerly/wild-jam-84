@@ -1,7 +1,15 @@
 extends Node3D
 
-var rover = load("res://game/rover.tscn").instantiate()
+var planet_rover = load("res://game/rover.tscn").instantiate()
+var rock = load("res://game/rock.tscn").instantiate()
+var terrain = load("res://game/terrain.tscn").instantiate()
 
-func _physics_process(delta: float) -> void:
-	add_child(rover)
-	rover.position = $Spawnpoint.position
+func _ready():
+	add_child(planet_rover)
+	add_child(rock)
+	add_child(terrain)
+	#print(terrain.get_child(0).get_child(0).spawnpoint_pos)
+	#$Spawnpoint.position = Vector3(0, terrain.get_node("../StaticBody3D/Terrain").spawnpoint_pos, 0)
+	$Spawnpoint.position = Vector3(0, 5, 0)
+	planet_rover.position = $Spawnpoint.position
+	rock.position = Vector3(0.1, 0, 0.2)
