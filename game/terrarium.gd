@@ -1,8 +1,8 @@
 extends Node2D
 
 var map = load("res://maps/map_1.tscn").instantiate()
-@export var Mob: PackedScene = load("res://mobs/mob_temp.tscn")
-@export var Ui: PackedScene = load("res://game/terrarium_ui.tscn")
+@export var Mob: PackedScene
+@export var Ui: PackedScene
 
 func _ready():
 	var mob = Mob.instantiate()

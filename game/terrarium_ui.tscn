@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvyf64e30su4y"]
+[gd_scene load_steps=4 format=3 uid="uid://cvyf64e30su4y"]
 
 [ext_resource type="Script" uid="uid://beyn7h6uii0ix" path="res://game/terrarium_ui.gd" id="1_n3l3h"]
 [ext_resource type="Script" uid="uid://4qfpw1jrejys" path="res://game/hotbar.gd" id="2_g8p5x"]
+[ext_resource type="PackedScene" uid="uid://228vrls27ch1" path="res://items/hotbar_slot.tscn" id="3_g8p5x"]
 
 [node name="terrarium_ui" type="Control"]
 layout_mode = 3
@@ -15,15 +16,18 @@ script = ExtResource("1_n3l3h")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -30.0
+offset_top = -180.0
+offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 mouse_default_cursor_shape = 5
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
 
 [node name="Hotbar" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -31,6 +35,33 @@ mouse_filter = 0
 theme_override_constants/separation = 50
 alignment = 1
 script = ExtResource("2_g8p5x")
+
+[node name="hotbar_slot" parent="MarginContainer/Hotbar" instance=ExtResource("3_g8p5x")]
+layout_mode = 2
+
+[node name="hotbar_slot2" parent="MarginContainer/Hotbar" instance=ExtResource("3_g8p5x")]
+layout_mode = 2
+
+[node name="hotbar_slot3" parent="MarginContainer/Hotbar" instance=ExtResource("3_g8p5x")]
+layout_mode = 2
+
+[node name="hotbar_slot4" parent="MarginContainer/Hotbar" instance=ExtResource("3_g8p5x")]
+layout_mode = 2
+
+[node name="hotbar_slot5" parent="MarginContainer/Hotbar" instance=ExtResource("3_g8p5x")]
+layout_mode = 2
+
+[node name="hotbar_slot6" parent="MarginContainer/Hotbar" instance=ExtResource("3_g8p5x")]
+layout_mode = 2
+
+[node name="hotbar_slot7" parent="MarginContainer/Hotbar" instance=ExtResource("3_g8p5x")]
+layout_mode = 2
+
+[node name="hotbar_slot8" parent="MarginContainer/Hotbar" instance=ExtResource("3_g8p5x")]
+layout_mode = 2
+
+[node name="hotbar_slot9" parent="MarginContainer/Hotbar" instance=ExtResource("3_g8p5x")]
+layout_mode = 2
 
 [connection signal="mouse_entered" from="MarginContainer/Hotbar" to="." method="_on_h_box_container_mouse_entered"]
 [connection signal="mouse_exited" from="MarginContainer/Hotbar" to="." method="_on_h_box_container_mouse_exited"]

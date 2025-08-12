@@ -4,11 +4,21 @@
 [ext_resource type="Script" uid="uid://da3sq52i3es3f" path="res://items/hotbar_slot.gd" id="1_ssr4g"]
 
 [node name="hotbar_slot" type="Button"]
-offset_right = 128.0
-offset_bottom = 128.0
-scale = Vector2(2, 2)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 124.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
 mouse_filter = 1
 mouse_default_cursor_shape = 3
 icon = ExtResource("1_qdmgy")
+icon_alignment = 1
 expand_icon = true
 script = ExtResource("1_ssr4g")
