@@ -5,6 +5,6 @@
 
 [resource]
 script = ExtResource("2_w6rrj")
-max_size = 0
+max_size = 9
 items = Array[ExtResource("1_ryicv")]([])
 metadata/_custom_type_script = "uid://2hn3hj5wvq7s"

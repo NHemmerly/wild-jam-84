@@ -11,4 +11,5 @@ food = false
 decor = false
 plaything = true
 icon = ExtResource("1_yxiwd")
+stackable = true
 metadata/_custom_type_script = "uid://dgtq1v27v0gt5"

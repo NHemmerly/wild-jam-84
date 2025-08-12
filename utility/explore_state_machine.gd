@@ -1,1 +1,1 @@
-extends StateMachine
+extends PlayerState
