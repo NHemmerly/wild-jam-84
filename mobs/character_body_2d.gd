@@ -7,6 +7,7 @@ class_name Critter extends CharacterBody2D
 @export var tick_update = false
 @export var hold_position := Vector2.ZERO
 @export var feeding_distance := 400.0
+@export var mouse_inside: bool
 
 # Variables for state
 @onready var wanderCd = $Timer
@@ -30,7 +31,14 @@ func _process(_delta: float) -> void:
 func update():
 	scale_size()
 	is_in_feeding_zone()
+	feed()
 	#tick_status()
+	
+func feed():
+	if mouse_inside && \
+	player_state.stats.current_state == Enums.ActionState.FEEDING && \
+	Input.is_action_just_pressed("click"):
+		print("Character_Body_2D:40 MMMMM TASTYYY")
 	
 func scale_size():
 	hold_position = position
@@ -57,4 +65,7 @@ func _on_status_tickdown_timeout() -> void:
 		status[stat] = snapped(status[stat], 0.01)
 
 func _on_mouse_entered() -> void:
-	pass
+	mouse_inside = true
+	
+func _on_mouse_exited() -> void:
+	mouse_inside = false
