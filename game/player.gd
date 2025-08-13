@@ -12,7 +12,9 @@ func _ready() -> void:
 	inventory.items.append(test_item.item)
 
 func _process(delta: float) -> void:
-	pass
+	if stats.held_item_icon != null:
+		$held_item.texture = stats.held_item_icon
+	$held_item.position = get_global_mouse_position()
 	
 func update():
 	pass
