@@ -32,8 +32,8 @@ func locked(locked):
 	#apply_impulse(Vector3(100, 100 ,100))
 
 
-func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
-	if InputEventMouseButton && event.pressed && event.button_index == MOUSE_BUTTON_LEFT:
-		print("aaaaa")
-		locked(false)
-		apply_impulse(Vector3(100, 100, 100)) # Replace with function body.
+#func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	#if InputEventMouseButton && event.is_pressed() && event.button_index == MOUSE_BUTTON_LEFT:
+		#print("aaaaa")
+		#locked(false)
+		#apply_impulse(Vector3(100, 100, 100), get_root().get_tree().get_child("planet_rover"))

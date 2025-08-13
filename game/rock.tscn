@@ -34,7 +34,7 @@ size = Vector2(0.1, 0.1)
 
 [node name="RockBody" type="RigidBody3D" parent="."]
 mass = 0.1
-gravity_scale = 0.01
+gravity_scale = 0.03
 script = ExtResource("1_7didp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RockBody"]

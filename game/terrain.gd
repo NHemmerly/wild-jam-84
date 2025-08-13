@@ -1,7 +1,7 @@
 @tool
 extends MeshInstance3D
 
-const SIZE := 256.0
+const SIZE := 2536.0
 
 @export_range(4, 256, 4) var resolution := 32:
 	set(new_resolution):
@@ -15,7 +15,7 @@ const SIZE := 256.0
 		if noise:
 			noise.changed.connect(update_mesh)
 			
-@export_range(4, 128, 4) var height := 64.0:
+@export_range(0, 128) var height := 64.0:
 	set(new_height):
 		height = new_height
 		material_override.set_shader_parameter("height", height * 2.0)

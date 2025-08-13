@@ -1,7 +1,7 @@
 extends VehicleBody3D
 
-const ENGINE_POWER := 10
-const MAX_STEER := 0.8
+const ENGINE_POWER := 2
+const MAX_STEER := 0.2
 
 
 	
