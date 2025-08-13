@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://global.gd"
 player_state="*res://game/player.tscn"
+Enums="*res://enums.gd"
 
 [display]
 

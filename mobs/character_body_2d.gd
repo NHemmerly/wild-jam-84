@@ -6,6 +6,7 @@ class_name Critter extends CharacterBody2D
 @export var timer_done = false
 @export var tick_update = false
 @export var hold_position := Vector2.ZERO
+@export var feeding_distance := 400.0
 
 # Variables for state
 @onready var wanderCd = $Timer
@@ -28,6 +29,7 @@ func _process(_delta: float) -> void:
 	
 func update():
 	scale_size()
+	is_in_feeding_zone()
 	#tick_status()
 	
 func scale_size():
@@ -38,6 +40,13 @@ func scale_size():
 		scale_factor *= SCALER
 	scale = Vector2(scale_factor, scale_factor)
 	position = hold_position
+
+func is_in_feeding_zone():
+	# really long line haha
+	return position.distance_to(get_global_mouse_position()) < feeding_distance
+
+func mouse_direction():
+	return get_global_mouse_position() - global_position
 	
 func _on_timer_timeout() -> void:
 	timer_done = true

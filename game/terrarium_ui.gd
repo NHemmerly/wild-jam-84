@@ -17,9 +17,7 @@ func fill_hotbar():
 	var slots = $MarginContainer/Hotbar.get_children()
 	for slot in slots:
 		if player_state.inventory.items[i] != null:
-			print(player_state.inventory.items[i])
 			slot.item = player_state.inventory.items[i]
-		print(slot.item)
 		slot.update()
 		i += 1
 

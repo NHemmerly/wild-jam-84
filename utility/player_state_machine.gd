@@ -1,17 +1,18 @@
 class_name PlayerStateMachine extends State
 
 ## The initial state of the state machine. If not set, the first child node is used.
-@export var initial_state: StateMachine = null
+@export var initial_state: State = null
 
 ## The current state of the state machine.
-@onready var state: StateMachine = (func get_initial_state() -> StateMachine:
+@onready var state: State = (func get_initial_state() -> State:
 	print(get_child(0))
 	return initial_state if initial_state != null else get_child(0)
 ).call()
 
 func _ready() -> void:
 	# Give every state a reference to the state machine.
-	for state_node: StateMachine in find_children("*", "StateMachine"):
+	print(get_children())
+	for state_node: State in find_children("*", "State"):
 		state_node.finished.connect(_transition_to_next_state)
 
 	# State machines usually access data from the root node of the scene they're part of: the owner.
@@ -32,7 +33,10 @@ func _physics_process(delta: float) -> void:
 
 func _transition_to_next_state(target_state_path: String, data: Dictionary = {}) -> void:
 	if not has_node(target_state_path):
-		printerr(owner.name + ": Trying to transition to state " + target_state_path + " but it does not exist.")
+		print(str(get_children()) + "line 36 idiot")
+		printerr("player_state_machine.gd:37 " \
+				+ str(get_parent()) + ": Trying to transition to state " \
+				+ target_state_path + " but it does not exist.")
 		return
 
 	var previous_state_path := state.name
