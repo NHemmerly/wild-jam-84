@@ -18,6 +18,7 @@ func fill_hotbar():
 	for slot in slots:
 		if player_state.inventory.items[i] != null:
 			slot.item = player_state.inventory.items[i]
+		slot.id = i
 		i += 1
 		
 func update_inv(slots: Array, inv: Array) -> void:

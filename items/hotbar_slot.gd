@@ -1,6 +1,7 @@
 extends Button
 
 @export var item: Item = null
+@export var id: int
 
 #func _ready():
 #	if item:
@@ -22,14 +23,22 @@ func swap_item(swap_item: Item) -> Item:
 	return swap_item
 
 func _on_pressed() -> void:
+	# Item in slot 
 	if item != null:
+		# Item in hand
 		if player_state.held_item != null:
 			player_state.held_item = swap_item(player_state.held_item)
+			player_state.inventory.items[id] = item
+		# Item not in hand
 		else:
 			player_state.held_item = item
 			item = null
+			player_state.inventory.items[id] = null
+	# Item not in slot but player has an item
 	elif player_state.held_item != null:
 		item = player_state.held_item
 		player_state.held_item = null
+		player_state.inventory.items[id] = item
+		
 		
 	

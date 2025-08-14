@@ -5,17 +5,15 @@
 [ext_resource type="Resource" uid="uid://d2cw0qncvsrg5" path="res://game/player_stats.tres" id="3_du4nq"]
 
 [node name="Player" type="Node2D"]
+z_index = 100
 script = ExtResource("1_dadds")
 inventory = ExtResource("2_du4nq")
 stats = ExtResource("3_du4nq")
 
-[node name="Label" type="Label" parent="."]
-z_index = 100
-offset_right = 40.0
-offset_bottom = 22.3333
-theme_override_font_sizes/font_size = 48
+[node name="layering" type="CanvasLayer" parent="."]
+layer = 2
 
-[node name="held_item" type="Sprite2D" parent="."]
+[node name="held_item" type="Sprite2D" parent="layering"]
 z_index = 100
 y_sort_enabled = true
 scale = Vector2(0.75, 0.75)

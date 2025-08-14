@@ -17,14 +17,13 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if held_item != null:
-		$held_item.texture = held_item.icon
+		$layering/held_item.texture = held_item.icon
 		set_state(held_item.usage)
 	else:
-		$held_item.texture = null
+		$layering/held_item.texture = null
 		set_state(-1)
-	$held_item.position = get_global_mouse_position()
-	print(inventory.items)
-	
+	$layering/held_item.position = get_global_mouse_position()
+		
 func set_state(usage: int):
 	match usage:
 		Enums.ItemUse.FOOD:
