@@ -1,9 +1,9 @@
 extends Node
 
 enum ItemUse {
-	FOOD,
-	DECOR,
-	PLAYTHING
+	FOOD, 		# 0
+	DECOR,		# 1
+	PLAYTHING 	# 2
 }
 
 enum ActionState {

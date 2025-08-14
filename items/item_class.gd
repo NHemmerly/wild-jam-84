@@ -13,4 +13,4 @@ enum ItemUse {
 @export var type: String
 @export var usage: ItemUse
 @export var icon: Texture2D
-@export var stackable: bool
+@export var count: int

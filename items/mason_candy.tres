@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dve76dw6qqxww"]
+
+[ext_resource type="Texture2D" uid="uid://bmbdnjpbas4ov" path="res://assets/CruS/Textures/bouncy.png" id="1_7wkpb"]
+[ext_resource type="Script" uid="uid://dgtq1v27v0gt5" path="res://items/item_class.gd" id="1_gobu8"]
+
+[resource]
+script = ExtResource("1_gobu8")
+name = "Mason's Candy"
+type = "cuteness"
+usage = 0
+icon = ExtResource("1_7wkpb")
+count = 1
+metadata/_custom_type_script = "uid://dgtq1v27v0gt5"
