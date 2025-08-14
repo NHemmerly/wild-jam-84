@@ -1,38 +1,47 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1sq4k7a1svly"]
+[gd_scene load_steps=9 format=3 uid="uid://c1sq4k7a1svly"]
 
 [ext_resource type="Script" uid="uid://c8g182lbxegdr" path="res://game/rover.gd" id="1_xvu2q"]
 [ext_resource type="Script" uid="uid://r0qkp78ggomq" path="res://game/rover_cam.gd" id="2_c7neo"]
 [ext_resource type="Script" uid="uid://cucldu4a5lfgv" path="res://game/timer.gd" id="3_uyamd"]
+[ext_resource type="Shader" uid="uid://bcb6unbl23h2" path="res://game/rover_view.gdshader" id="4_w1kh0"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xvu2q"]
-size = Vector3(0.146484, 0.111035, 0.1)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uyamd"]
+radius = 0.3
+height = 0.6
 
-[sub_resource type="BoxMesh" id="BoxMesh_c7neo"]
-size = Vector3(0.146, 0.111, 0.1)
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_w1kh0"]
+radius = 0.3
+height = 0.6
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_uyamd"]
-top_radius = 0.025
-bottom_radius = 0.025
-height = 0.025
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_spr2s"]
+render_priority = 0
+shader = ExtResource("4_w1kh0")
+shader_parameter/shadows_enabled = true
+shader_parameter/highlights_enabled = true
+shader_parameter/shadow_strength = 0.4
+shader_parameter/highlight_strength = 0.1
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_uyamd"]
+material = SubResource("ShaderMaterial_spr2s")
+flip_faces = true
 
 [node name="Rover" type="Node3D"]
 
-[node name="Rover" type="VehicleBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0693533, 0)
-mass = 100.0
-gravity_scale = 0.1
-engine_force = 1.0
+[node name="Rover" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 script = ExtResource("1_xvu2q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rover"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00551757, 0)
-shape = SubResource("BoxShape3D_xvu2q")
+shape = SubResource("CapsuleShape3D_uyamd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Rover"]
-mesh = SubResource("BoxMesh_c7neo")
+mesh = SubResource("CapsuleMesh_w1kh0")
 
 [node name="RoverCam" type="Camera3D" parent="Rover"]
-transform = Transform3D(-1, -1.90728e-10, -8.74225e-08, 0, 0.999998, -0.00218168, 8.74227e-08, -0.00218168, -0.999998, 0, 0.0185377, -0.0457214)
+transform = Transform3D(-1, -1.90728e-10, -8.74225e-08, 0, 0.999998, -0.00218168, 8.74227e-08, -0.00218168, -0.999998, 0, 0, 0.31)
 fov = 100.4
 script = ExtResource("2_c7neo")
 metadata/_edit_group_ = true
@@ -45,66 +54,8 @@ wait_time = 0.06
 one_shot = true
 script = ExtResource("3_uyamd")
 
-[node name="VehicleWheelFR" type="VehicleWheel3D" parent="Rover"]
-transform = Transform3D(1, 1.74846e-07, 1.72861e-07, -1.74846e-07, 1, 7.34023e-15, -1.72861e-07, -2.8093e-14, 1, -0.0860337, -0.0363545, 0.0407604)
-use_as_traction = true
-use_as_steering = true
-wheel_roll_influence = 1.0
-wheel_radius = 0.05
-wheel_rest_length = 0.02
-suspension_travel = 0.02
-suspension_stiffness = 10.0
-damping_compression = 0.5
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Rover/VehicleWheelFR"]
-transform = Transform3D(-1.33118e-07, 1, 1.31134e-07, -1.21135e-14, 1.31134e-07, -1, -1, -1.33118e-07, 4.12858e-15, 0, 0, 0)
-mesh = SubResource("CylinderMesh_uyamd")
-skeleton = NodePath("../..")
-
-[node name="VehicleWheelFL" type="VehicleWheel3D" parent="Rover"]
-transform = Transform3D(1, 4.56011e-21, 1.72861e-07, 7.10543e-15, 1, -8.29218e-15, -1.72861e-07, 1.77636e-14, 1, 0.086, -0.036, 0.041)
-use_as_traction = true
-use_as_steering = true
-wheel_roll_influence = 1.0
-wheel_radius = 0.05
-wheel_rest_length = 0.02
-suspension_travel = 0.02
-suspension_stiffness = 10.0
-damping_compression = 0.5
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Rover/VehicleWheelFL"]
-transform = Transform3D(-1.33118e-07, 1, 1.31134e-07, -1.21135e-14, 1.31134e-07, -1, -1, -1.33118e-07, 4.12858e-15, 0.000257049, 0, 0)
-mesh = SubResource("CylinderMesh_uyamd")
-skeleton = NodePath("../..")
-
-[node name="VehicleWheelBL" type="VehicleWheel3D" parent="Rover"]
-transform = Transform3D(1, 4.56011e-21, 1.72861e-07, 7.10543e-15, 1, -8.29218e-15, -1.72861e-07, 1.77636e-14, 1, 0.086, -0.036, -0.035)
-use_as_traction = true
-wheel_roll_influence = 1.0
-wheel_radius = 0.05
-wheel_rest_length = 0.02
-suspension_travel = 0.02
-suspension_stiffness = 10.0
-damping_compression = 0.5
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Rover/VehicleWheelBL"]
-transform = Transform3D(-1.33118e-07, 1, 1.31134e-07, -1.21135e-14, 1.31134e-07, -1, -1, -1.33118e-07, 4.12858e-15, 0.000257049, 0, 0)
-mesh = SubResource("CylinderMesh_uyamd")
-skeleton = NodePath("../..")
-
-[node name="VehicleWheelBR" type="VehicleWheel3D" parent="Rover"]
-transform = Transform3D(1, 4.56011e-21, 1.72861e-07, 7.10543e-15, 1, -8.29218e-15, -1.72861e-07, 1.77636e-14, 1, -0.0863677, -0.0362236, -0.0350038)
-use_as_traction = true
-wheel_roll_influence = 1.0
-wheel_radius = 0.05
-wheel_rest_length = 0.02
-suspension_travel = 0.02
-suspension_stiffness = 10.0
-damping_compression = 0.5
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Rover/VehicleWheelBR"]
-transform = Transform3D(-1.33118e-07, 1, 1.31134e-07, -1.21135e-14, 1.31134e-07, -1, -1, -1.33118e-07, 4.12858e-15, 0.000257049, 0, 0)
-mesh = SubResource("CylinderMesh_uyamd")
-skeleton = NodePath("../..")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rover/RoverCam"]
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_uyamd")
 
 [connection signal="timeout" from="Rover/RoverCam/Timer" to="Rover/RoverCam" method="_on_timer_timeout"]
