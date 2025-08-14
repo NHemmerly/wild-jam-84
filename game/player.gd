@@ -17,15 +17,16 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if held_item != null:
-		print(held_item.name)
 		$held_item.texture = held_item.icon
-		set_state()
+		set_state(held_item.usage)
 	else:
 		$held_item.texture = null
+		set_state(-1)
 	$held_item.position = get_global_mouse_position()
+	print(inventory.items)
 	
-func set_state():
-	match held_item.usage:
+func set_state(usage: int):
+	match usage:
 		Enums.ItemUse.FOOD:
 			player_state.stats.current_state = Enums.ActionState.FEEDING
 		Enums.ItemUse.PLAYTHING:

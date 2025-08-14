@@ -15,16 +15,16 @@ func update():
 	else:
 		icon = null
 
-func swap_item(swap_item: Item) -> void:
-	var temp: Item = swap_item
-	swap_item = item
-	item = temp
-	print(str(item.name) + str(swap_item.name))
+func swap_item(swap_item: Item) -> Item:
+	var temp: Item = item
+	item = swap_item
+	swap_item = temp
+	return swap_item
 
 func _on_pressed() -> void:
 	if item != null:
 		if player_state.held_item != null:
-			swap_item(player_state.held_item)
+			player_state.held_item = swap_item(player_state.held_item)
 		else:
 			player_state.held_item = item
 			item = null
