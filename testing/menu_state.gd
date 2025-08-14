@@ -1,7 +1,7 @@
 class_name MenuState extends State
 
-const MAIN_MENU = "Main_menu"
-const SETTINGS = "Settings"
+const MAIN_MENU = "main_menu"
+const SETTINGS = "settings"
 
 var player_sm: PlayerStateMachine
 

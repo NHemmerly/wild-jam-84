@@ -1,20 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccwv2t67g0nj4"]
+[gd_scene load_steps=9 format=3 uid="uid://ccwv2t67g0nj4"]
 
 [ext_resource type="Script" uid="uid://cnkipjdmkv8ni" path="res://mobs/character_body_2d.gd" id="1_2jubo"]
 [ext_resource type="Texture2D" uid="uid://b0grjha0aigqw" path="res://assets/skull2.png" id="1_fjkro"]
+[ext_resource type="Script" uid="uid://g8gwuy10npm1" path="res://mobs/collision_shape_2d.gd" id="2_4ik36"]
 [ext_resource type="Script" uid="uid://caaxlwu28g2nj" path="res://utility/state_machine.gd" id="3_qtnva"]
 [ext_resource type="Script" uid="uid://q3yfh32rnvdk" path="res://states/idle.gd" id="4_w6mpm"]
 [ext_resource type="Script" uid="uid://cui1i2u0ef8ic" path="res://states/wander.gd" id="5_4ik36"]
+[ext_resource type="Script" uid="uid://dx270lx4ykkhl" path="res://states/feeding.gd" id="6_w6mpm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ifc8"]
 size = Vector2(128, 128)
 
 [node name="critter" type="CharacterBody2D"]
+input_pickable = true
 script = ExtResource("1_2jubo")
-speed = 0
+speed = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7ifc8")
+script = ExtResource("2_4ik36")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_fjkro")
@@ -35,6 +39,9 @@ script = ExtResource("4_w6mpm")
 [node name="Wander" type="Node" parent="StateMachine"]
 script = ExtResource("5_4ik36")
 
+[node name="Feeding" type="Node" parent="StateMachine"]
+script = ExtResource("6_w6mpm")
+
 [node name="Label" type="Label" parent="."]
 offset_left = -54.0
 offset_top = -91.0
@@ -48,5 +55,6 @@ offset_right = 29.0
 offset_bottom = -98.0
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="status_tickdown" to="." method="_on_status_tickdown_timeout"]

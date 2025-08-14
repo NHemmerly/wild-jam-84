@@ -12,5 +12,9 @@ func physics_update(_delta: float) -> void:
 	if critter.timer_done:
 		critter.timer_done = false	
 		finished.emit(WANDER)
+	if player_state.stats.current_state == Enums.ActionState.FEEDING \
+		&& critter.is_in_feeding_zone():
+		critter.wanderCd.stop()
+		finished.emit(FEEDING)
 	
 	

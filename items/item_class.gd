@@ -1,12 +1,16 @@
 extends Resource
 class_name Item
 
+enum ItemUse {
+	FOOD,
+	DECOR,
+	PLAYTHING
+}
+
 @export var name: String
 #Types yoinked from pokemon contests
 #Coolness, Beauty, Cuteness, Cleverness, and Toughness
 @export var type: String
-@export var food: bool
-@export var decor: bool
-@export var plaything: bool
+@export var usage: ItemUse
 @export var icon: Texture2D
-@export var stackable: bool
+@export var count: int
