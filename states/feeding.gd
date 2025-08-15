@@ -4,7 +4,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	critter.wanderCd.start()
 
 func physics_update(_delta: float) -> void:
-	critter.velocity = critter.mouse_direction() * critter.speed
+	critter.velocity = critter.stats.speed * critter.mouse_direction()
 	critter.update()
 	critter.move_and_slide()
 	

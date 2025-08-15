@@ -1,7 +1,7 @@
 class_name Critter extends CharacterBody2D
 
 # Movement and scaling
-@export var speed = 100
+@export var stats: CritterRes
 @export var start_y = 0
 @export var timer_done = false
 @export var tick_update = false
@@ -15,17 +15,15 @@ class_name Critter extends CharacterBody2D
 @onready var fsm = $StateMachine
 @onready var label = $Label # Debug
 
-# Creature status
-var status = {
-	"happiness" = 100.0,
-	"hunger" = 100.0,
-}
 # make scaler lower to make scaling more dramatic, higher for less
 const SCALER := 0.85
 const TICK_RATE := 1.0
 
+func _ready() -> void:
+	$Sprite2D.texture = stats.sprite	
+
 func _process(_delta: float) -> void:
-	label.text = str(status["happiness"]) # Debug
+	label.text = str(stats.happiness) # Debug
 	$state_label.text = fsm.state.name
 	
 func update():
@@ -54,16 +52,20 @@ func is_in_feeding_zone():
 	return position.distance_to(get_global_mouse_position()) < feeding_distance
 
 func mouse_direction():
-	return get_global_mouse_position() - global_position
+	var mouse_direction := (get_global_mouse_position() - global_position)
+	return mouse_direction.normalized() * stats.speed_scale
+	
+func tick_stats(stat: float, rate: float) -> void:
+	stat -= rate
+	stat = snapped(stat, 0.01)
 	
 func _on_timer_timeout() -> void:
 	timer_done = true
 
 func _on_status_tickdown_timeout() -> void:
-	for stat in status:
-		status[stat] -= TICK_RATE
-		status[stat] = snapped(status[stat], 0.01)
-
+	tick_stats(stats.hunger, stats.hunger_rate)
+	tick_stats(stats.happiness, stats.happiness_rate)
+	
 func _on_mouse_entered() -> void:
 	mouse_inside = true
 	

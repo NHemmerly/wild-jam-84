@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://ccwv2t67g0nj4"]
 
-[ext_resource type="Script" uid="uid://cnkipjdmkv8ni" path="res://mobs/character_body_2d.gd" id="1_2jubo"]
-[ext_resource type="Texture2D" uid="uid://b0grjha0aigqw" path="res://assets/skull2.png" id="1_fjkro"]
+[ext_resource type="Script" uid="uid://cnkipjdmkv8ni" path="res://mobs/critter.gd" id="1_2jubo"]
 [ext_resource type="Script" uid="uid://g8gwuy10npm1" path="res://mobs/collision_shape_2d.gd" id="2_4ik36"]
+[ext_resource type="Resource" uid="uid://xpb8i1v586r2" path="res://mobs/critter_1.tres" id="2_rxuko"]
 [ext_resource type="Script" uid="uid://caaxlwu28g2nj" path="res://utility/state_machine.gd" id="3_qtnva"]
 [ext_resource type="Script" uid="uid://q3yfh32rnvdk" path="res://states/idle.gd" id="4_w6mpm"]
 [ext_resource type="Script" uid="uid://cui1i2u0ef8ic" path="res://states/wander.gd" id="5_4ik36"]
@@ -14,14 +14,13 @@ size = Vector2(128, 128)
 [node name="critter" type="CharacterBody2D"]
 input_pickable = true
 script = ExtResource("1_2jubo")
-speed = 1
+stats = ExtResource("2_rxuko")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7ifc8")
 script = ExtResource("2_4ik36")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_fjkro")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
