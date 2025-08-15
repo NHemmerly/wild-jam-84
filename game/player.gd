@@ -14,8 +14,9 @@ func _ready() -> void:
 	inventory.items.append(test_item.item)
 	mason_candy.item = load("res://items/mason_candy.tres")
 	inventory.items.append(mason_candy.item)
+	mason_candy.item.count = 5
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if held_item != null:
 		$layering/held_item.texture = held_item.icon
 		set_state(held_item.usage)
@@ -34,6 +35,15 @@ func set_state(usage: int):
 			player_state.stats.current_state = Enums.ActionState.DECORATING
 		_:
 			player_state.stats.current_state = Enums.ActionState.NAV	
+
+func update_inv() -> void:
+	for item in inventory.items:
+		if item != null:
+			if item.count <= 0:
+				item = null
+	if held_item != null:
+		if held_item.count <= 0:
+			held_item = null
 
 func update():
 	pass

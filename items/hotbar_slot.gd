@@ -6,7 +6,7 @@ extends Button
 #func _ready():
 #	if item:
 #		icon = item.icon
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	update()
 	
 
@@ -16,11 +16,11 @@ func update():
 	else:
 		icon = null
 
-func swap_item(swap_item: Item) -> Item:
+func swap_item(swapn_item: Item) -> Item:
 	var temp: Item = item
-	item = swap_item
-	swap_item = temp
-	return swap_item
+	item = swapn_item
+	swapn_item = temp
+	return swapn_item
 
 func _on_pressed() -> void:
 	# Item in slot 

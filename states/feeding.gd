@@ -1,6 +1,6 @@
 extends CritterState
 
-func enter(previous_state_path: String, data := {}) -> void:
+func enter(_previous_state_path: String, _data := {}) -> void:
 	critter.wanderCd.start()
 
 func physics_update(_delta: float) -> void:
