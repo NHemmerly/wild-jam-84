@@ -9,11 +9,12 @@ var test_item = load("res://items/item.tscn").instantiate()
 var mason_candy = load("res://items/item.tscn").instantiate()
 
 func _ready() -> void:
-	for i in range(inventory.max_size - 2):
+	for i in range(inventory.max_size - 3):
 		inventory.items.append(null)
 	inventory.items.append(test_item.item)
 	mason_candy.item = load("res://items/mason_candy.tres")
 	inventory.items.append(mason_candy.item)
+	inventory.items.append(test_item.item)
 	mason_candy.item.count = 5
 
 func _process(_delta: float) -> void:
