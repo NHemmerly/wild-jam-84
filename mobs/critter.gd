@@ -42,9 +42,7 @@ func feed():
 		stats.happiness = cull_greater_than_max(stats.happiness)
 		stats.hunger = cull_greater_than_max(stats.hunger)
 		player_state.held_item.count -= 1
-		print(player_state.held_item.count)
 		player_state.update_inv()
-		print(player_state.inventory.items)
 	
 
 func calculate_status_restore() -> void:

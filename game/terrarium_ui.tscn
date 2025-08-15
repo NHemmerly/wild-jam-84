@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvyf64e30su4y"]
+[gd_scene load_steps=6 format=3 uid="uid://cvyf64e30su4y"]
 
 [ext_resource type="Script" uid="uid://beyn7h6uii0ix" path="res://game/terrarium_ui.gd" id="1_n3l3h"]
 [ext_resource type="Script" uid="uid://4qfpw1jrejys" path="res://game/hotbar.gd" id="2_g8p5x"]
 [ext_resource type="PackedScene" uid="uid://228vrls27ch1" path="res://items/hotbar_slot.tscn" id="3_g8p5x"]
+[ext_resource type="Script" uid="uid://cwjd0fgq7u5ct" path="res://game/v_box_container.gd" id="4_0m4o3"]
+[ext_resource type="Script" uid="uid://dvbisj8xyysa5" path="res://game/explore.gd" id="4_ofjix"]
 
 [node name="terrarium_ui" type="Control"]
 layout_mode = 3
@@ -63,5 +65,31 @@ layout_mode = 2
 [node name="hotbar_slot9" parent="MarginContainer/Hotbar" instance=ExtResource("3_g8p5x")]
 layout_mode = 2
 
+[node name="explore" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.181
+anchor_right = 0.102
+anchor_bottom = 0.777
+offset_top = 0.519989
+offset_right = -0.840012
+offset_bottom = -0.160034
+grow_vertical = 2
+script = ExtResource("4_ofjix")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="explore"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("4_0m4o3")
+
+[node name="GoExplore" type="Button" parent="explore/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+theme_override_font_sizes/font_size = 48
+text = "Explore!"
+
 [connection signal="mouse_entered" from="MarginContainer/Hotbar" to="." method="_on_h_box_container_mouse_entered"]
 [connection signal="mouse_exited" from="MarginContainer/Hotbar" to="." method="_on_h_box_container_mouse_exited"]
+[connection signal="mouse_entered" from="explore" to="." method="_on_explore_mouse_entered"]
+[connection signal="mouse_exited" from="explore" to="." method="_on_explore_mouse_exited"]
