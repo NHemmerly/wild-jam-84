@@ -47,3 +47,7 @@ func _on_explore_mouse_entered() -> void:
 func _on_explore_mouse_exited() -> void:
 	for child in $explore/VBoxContainer.get_children():
 		child.modulate.a = 0.0
+
+
+func _on_go_explore_pressed() -> void:
+	Global.goto_scene("res://game/planet.tscn")

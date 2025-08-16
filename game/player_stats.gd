@@ -10,3 +10,4 @@ enum ActionState {
 
 @export var action_state: ActionState
 @export var current_state: int
+@export var batt_level: float = 100.0

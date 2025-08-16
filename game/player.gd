@@ -11,6 +11,9 @@ var test_item = load("res://items/trash_item.tres")
 func _ready() -> void:
 	for i in range(inventory.max_size):
 		inventory.items.append(null)
+	# When adding items to inventory make sure they are duplicated
+	# allows them to be freed when updating inventory to clear
+	# empties
 	inventory.items[0] = mason_candy.duplicate()
 	inventory.items[1] = mason_candy.duplicate()
 	inventory.items[2] = mason_candy.duplicate()
