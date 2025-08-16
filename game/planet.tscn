@@ -43,6 +43,8 @@ size = Vector2(100, 100)
 [node name="Planet" type="Node3D"]
 script = ExtResource("1_dyb3w")
 
+[node name="planet_ui" type="CanvasLayer" parent="."]
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2e2cy")
 

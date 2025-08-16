@@ -51,3 +51,4 @@ func _on_explore_mouse_exited() -> void:
 
 func _on_go_explore_pressed() -> void:
 	Global.goto_scene("res://game/planet.tscn")
+	player_state.enter_planet_state()

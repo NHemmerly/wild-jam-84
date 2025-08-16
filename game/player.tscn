@@ -30,3 +30,8 @@ script = SubResource("GDScript_p0vpi")
 z_index = 100
 y_sort_enabled = true
 scale = Vector2(0.75, 0.75)
+
+[node name="batt_tick" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="batt_tick" to="." method="_on_batt_tick_timeout"]

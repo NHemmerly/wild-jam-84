@@ -3,7 +3,7 @@ extends VBoxContainer
 const BATT_LOW_LEVEL: float = 25.0
 const BATT_LOW_TEXT: String = "BATT LOW"
 var batt_started = false	
-var bit_flip = 0
+var bit_flip := 0
 
 func _process(delta: float) -> void:
 	warn_batt_low()
@@ -15,4 +15,5 @@ func warn_batt_low() -> void:
 		$Batt.text = BATT_LOW_TEXT
 
 func _on_batt_blink_timeout() -> void:
-	$Batt.modulate.a = float(~bit_flip * 100)
+	bit_flip = ~bit_flip 
+	$Batt.modulate.a = -bit_flip 

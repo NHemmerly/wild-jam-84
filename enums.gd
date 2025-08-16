@@ -10,5 +10,6 @@ enum ActionState {
 	NAV,
 	FEEDING, 
 	PLAYING,
-	DECORATING
+	DECORATING,
+	EXPLORE
 	}

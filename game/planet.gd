@@ -3,8 +3,10 @@ extends Node3D
 var planet_rover = load("res://game/rover.tscn").instantiate()
 var rock = load("res://game/rock.tscn").instantiate()
 var terrain = load("res://game/terrain.tscn").instantiate()
+var ui = load("res://game/ui/batt_meter.tscn").instantiate()
 
 func _ready():
+	$planet_ui.add_child(ui)
 	add_child(planet_rover)
 	add_child(rock)
 	add_child(terrain)
