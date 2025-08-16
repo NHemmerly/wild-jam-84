@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1sq4k7a1svly"]
+[gd_scene load_steps=10 format=3 uid="uid://c1sq4k7a1svly"]
 
 [ext_resource type="Script" uid="uid://c8g182lbxegdr" path="res://game/rover.gd" id="1_xvu2q"]
 [ext_resource type="Script" uid="uid://r0qkp78ggomq" path="res://game/rover_cam.gd" id="2_c7neo"]
 [ext_resource type="Script" uid="uid://cucldu4a5lfgv" path="res://game/timer.gd" id="3_uyamd"]
-[ext_resource type="Shader" uid="uid://bcb6unbl23h2" path="res://game/rover_view.gdshader" id="4_w1kh0"]
+[ext_resource type="Shader" uid="uid://dnrngyc8m8vol" path="res://game/rover_pixelate.gdshader" id="4_w1kh0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uyamd"]
 radius = 0.3
@@ -13,49 +13,60 @@ height = 0.6
 radius = 0.3
 height = 0.6
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_spr2s"]
-render_priority = 0
-shader = ExtResource("4_w1kh0")
-shader_parameter/shadows_enabled = true
-shader_parameter/highlights_enabled = true
-shader_parameter/shadow_strength = 0.4
-shader_parameter/highlight_strength = 0.1
-shader_parameter/highlight_color = Color(1, 1, 1, 1)
-shader_parameter/shadow_color = Color(0, 0, 0, 1)
+[sub_resource type="CylinderMesh" id="CylinderMesh_w1kh0"]
+top_radius = 0.001
+bottom_radius = 0.001
+height = 0.02
 
-[sub_resource type="QuadMesh" id="QuadMesh_uyamd"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_spr2s"]
+shader = ExtResource("4_w1kh0")
+shader_parameter/pixel_size = 4
+shader_parameter/screen_size = Vector2(1920, 1080)
+
+[sub_resource type="QuadMesh" id="QuadMesh_c4yco"]
 material = SubResource("ShaderMaterial_spr2s")
-flip_faces = true
 
 [node name="Rover" type="Node3D"]
 
 [node name="Rover" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.100808, 0)
 script = ExtResource("1_xvu2q")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rover"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Rover"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00448585, 0.134878, 0.307482)
+light_color = Color(0, 1, 0, 1)
+light_size = 0.561
+
+[node name="rover_col" type="CollisionShape3D" parent="Rover"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00551757, 0)
 shape = SubResource("CapsuleShape3D_uyamd")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Rover"]
+[node name="rover_body" type="MeshInstance3D" parent="Rover"]
 mesh = SubResource("CapsuleMesh_w1kh0")
 
 [node name="RoverCam" type="Camera3D" parent="Rover"]
 transform = Transform3D(-1, -1.90728e-10, -8.74225e-08, 0, 0.999998, -0.00218168, 8.74227e-08, -0.00218168, -0.999998, 0, 0, 0.31)
-fov = 100.4
+fov = 107.5
 script = ExtResource("2_c7neo")
 metadata/_edit_group_ = true
 
-[node name="LaserBarrel" type="Marker3D" parent="Rover/RoverCam"]
-transform = Transform3D(-1, 5.55112e-17, 8.74228e-08, -1.90728e-10, 0.999998, -0.00218168, -8.74225e-08, -0.00218168, -0.999998, 8.84413e-09, -0.0749016, -0.101002)
+[node name="LaserBarrelStart" type="Marker3D" parent="Rover/RoverCam"]
+transform = Transform3D(1, -6.93889e-17, -3.55271e-14, 0, 1, 0, 0, 0, 1, -1.37911e-09, -0.0419656, -0.0512249)
+
+[node name="LaserBarrel" type="Marker3D" parent="Rover/RoverCam/LaserBarrelStart"]
+transform = Transform3D(1, 6.93889e-17, 1.42109e-14, 0, 1, 0, 0, 0, 1, 7.7543e-09, -0.00024832, -0.021607)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rover/RoverCam/LaserBarrelStart/LaserBarrel"]
+transform = Transform3D(1, 8.76132e-08, 8.72318e-08, -8.72318e-08, -4.37722e-08, 1, 8.76132e-08, -1, -4.37722e-08, 0, 0, 0.01)
+mesh = SubResource("CylinderMesh_w1kh0")
 
 [node name="Timer" type="Timer" parent="Rover/RoverCam"]
 wait_time = 0.06
 one_shot = true
 script = ExtResource("3_uyamd")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Rover/RoverCam"]
-extra_cull_margin = 16384.0
-mesh = SubResource("QuadMesh_uyamd")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rover"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00448585, -0.004511, 0.474609)
+mesh = SubResource("QuadMesh_c4yco")
 
 [connection signal="timeout" from="Rover/RoverCam/Timer" to="Rover/RoverCam" method="_on_timer_timeout"]
