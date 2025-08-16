@@ -9,7 +9,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 	
 func fill_hotbar():
@@ -18,6 +18,7 @@ func fill_hotbar():
 	for slot in slots:
 		if player_state.inventory.items[i] != null:
 			slot.item = player_state.inventory.items[i]
+		slot.id = i
 		i += 1
 		
 func update_inv(slots: Array, inv: Array) -> void:
@@ -36,3 +37,17 @@ func _on_h_box_container_mouse_entered() -> void:
 func _on_h_box_container_mouse_exited() -> void:
 	for child in $MarginContainer/Hotbar.get_children():
 		child.modulate.a = 0.0
+
+
+func _on_explore_mouse_entered() -> void:
+	for child in $explore/VBoxContainer.get_children():
+		child.modulate.a = 1.0
+
+
+func _on_explore_mouse_exited() -> void:
+	for child in $explore/VBoxContainer.get_children():
+		child.modulate.a = 0.0
+
+
+func _on_go_explore_pressed() -> void:
+	Global.goto_scene("res://game/planet.tscn")

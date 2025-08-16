@@ -1,11 +1,5 @@
+class_name CritterRes
 extends Resource
-class_name Item
-
-enum ItemUse {
-	FOOD,
-	DECOR,
-	PLAYTHING
-}
 
 enum Type {
 	COOLNESS,
@@ -16,17 +10,16 @@ enum Type {
 	COUNT
 }
 
-@export var name: String
-#Types yoinked from pokemon contests
-#Coolness, Beauty, Cuteness, Cleverness, and Toughness
 @export var type: Type
 @export var t_string: String
-@export var usage: ItemUse
-@export var icon: Texture2D
-@export var count: int
-@export var base_restore: float = 10
-@export var likes_restore_scale: float = 1.5
-@export var hates_restore_scale: float = 0.5
+@export var speed: float
+@export var speed_scale: int
+@export var happiness: float = 100
+@export var hunger: float = 100
+@export var happiness_rate: float = 1.0
+@export var hunger_rate: float = 1.0
+@export var status_max: float = 100
+@export var sprite: Texture2D
 
 func _init() -> void:
 	set_type_string()

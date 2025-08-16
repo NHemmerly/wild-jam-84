@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://x726ksqlvf50"]
+
+[ext_resource type="FontFile" uid="uid://cdrs06wro0nuf" path="res://assets/fonts/battLow.ttf" id="1_fa5kg"]
+[ext_resource type="Script" uid="uid://bniwreyegp101" path="res://game/ui/label_bar.gd" id="1_tql7x"]
+[ext_resource type="Script" uid="uid://br3y3rph0dhnm" path="res://game/ui/batt_color.gd" id="2_tql7x"]
+
+[node name="batt_meter" type="Control"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 122.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.083
+anchor_top = 0.336
+anchor_right = 0.917
+anchor_bottom = 1.213
+offset_left = 0.639984
+offset_top = 0.00799561
+offset_right = -0.640137
+offset_bottom = 0.0139923
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="label_bar" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 9
+script = ExtResource("1_tql7x")
+
+[node name="Batt" type="Label" parent="MarginContainer/label_bar"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_fa5kg")
+theme_override_font_sizes/font_size = 48
+text = "BATT"
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/label_bar"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)
+
+[node name="batt_color" type="ColorRect" parent="MarginContainer/label_bar/ColorRect2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+color = Color(0, 1, 0, 1)
+script = ExtResource("2_tql7x")
+
+[node name="batt_blink" type="Timer" parent="MarginContainer/label_bar"]
+wait_time = 0.25
+
+[connection signal="timeout" from="MarginContainer/label_bar/batt_blink" to="MarginContainer/label_bar" method="_on_batt_blink_timeout"]

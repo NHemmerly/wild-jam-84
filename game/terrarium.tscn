@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bxbge6n15xv88" path="res://game/terrarium.gd" id="1_i2a14"]
 [ext_resource type="PackedScene" uid="uid://ccwv2t67g0nj4" path="res://mobs/mob_temp.tscn" id="2_ww474"]
-[ext_resource type="PackedScene" uid="uid://cvyf64e30su4y" path="res://game/terrarium_ui.tscn" id="3_c36tb"]
+[ext_resource type="PackedScene" uid="uid://cvyf64e30su4y" path="res://game/ui/terrarium_ui.tscn" id="3_c36tb"]
 
 [node name="terrarium" type="Node2D"]
 script = ExtResource("1_i2a14")
