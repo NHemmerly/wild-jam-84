@@ -1,0 +1,93 @@
+[gd_scene load_steps=12 format=3 uid="uid://qxmr8ucih7op"]
+
+[ext_resource type="Script" uid="uid://c8g182lbxegdr" path="res://game/rover.gd" id="1_fe5hh"]
+[ext_resource type="Shader" uid="uid://bsxlhjbmhlghn" path="res://game/rover_view2.gdshader" id="2_30hxq"]
+[ext_resource type="Script" uid="uid://r0qkp78ggomq" path="res://game/rover_cam.gd" id="3_vl6il"]
+[ext_resource type="Script" uid="uid://cucldu4a5lfgv" path="res://game/timer.gd" id="4_1wvgp"]
+[ext_resource type="Shader" uid="uid://bcb6unbl23h2" path="res://game/rover_view.gdshader" id="5_rg1gg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7wrvb"]
+radius = 0.3
+height = 0.6
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nt3wl"]
+radius = 0.3
+height = 0.6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w1kh0"]
+render_priority = 0
+shader = ExtResource("2_30hxq")
+shader_parameter/shadows_enabled = true
+shader_parameter/highlights_enabled = true
+shader_parameter/shadow_strength = 0.4
+shader_parameter/highlight_strength = 0.1
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_rgh7a"]
+material = SubResource("ShaderMaterial_w1kh0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_spr2s"]
+shader = ExtResource("5_rg1gg")
+shader_parameter/pix_num = 50.0
+shader_parameter/custom = false
+shader_parameter/cus_row_num = 30
+shader_parameter/cus_col_num = 30
+
+[sub_resource type="QuadMesh" id="QuadMesh_djyhs"]
+material = SubResource("ShaderMaterial_spr2s")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 512.0
+offset_bottom = 512.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Rover" type="CharacterBody3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+script = ExtResource("1_fe5hh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Rover"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00551757, 0)
+shape = SubResource("CapsuleShape3D_7wrvb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Rover"]
+mesh = SubResource("CapsuleMesh_nt3wl")
+
+[node name="outline" type="MeshInstance3D" parent="Node3D/Rover"]
+transform = Transform3D(-1, -1.90728e-10, -8.74224e-08, 0, 0.999998, -0.00218168, 8.74227e-08, -0.00218168, -0.999998, -1.74857e-10, -4.20213e-06, 0.408569)
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_rgh7a")
+skeleton = NodePath("../RoverCam")
+
+[node name="RoverCam" type="Camera3D" parent="Node3D/Rover"]
+transform = Transform3D(-1, -1.90728e-10, -8.74225e-08, 0, 0.999998, -0.00218168, 8.74227e-08, -0.00218168, -0.999998, 0, 0, 0.31)
+fov = 100.4
+script = ExtResource("3_vl6il")
+metadata/_edit_group_ = true
+
+[node name="LaserBarrel" type="Marker3D" parent="Node3D/Rover/RoverCam"]
+transform = Transform3D(-1, 5.55112e-17, 8.74228e-08, -1.90728e-10, 0.999998, -0.00218168, -8.74225e-08, -0.00218168, -0.999998, 8.84413e-09, -0.0749016, -0.101002)
+
+[node name="Timer" type="Timer" parent="Node3D/Rover/RoverCam"]
+wait_time = 0.06
+one_shot = true
+script = ExtResource("4_1wvgp")
+
+[node name="pixel" type="MeshInstance3D" parent="Node3D/Rover"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.374269)
+mesh = SubResource("QuadMesh_djyhs")
+
+[connection signal="timeout" from="Node3D/Rover/RoverCam/Timer" to="Node3D/Rover/RoverCam" method="_on_timer_timeout"]

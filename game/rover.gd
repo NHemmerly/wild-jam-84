@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED := 18.0
+const SPEED := 10
 const STEER := 2.0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 #const MAX_STEER := 0.8

@@ -1,9 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://crf4wlevu82d2"]
+[gd_scene load_steps=12 format=3 uid="uid://crf4wlevu82d2"]
 
 [ext_resource type="Script" uid="uid://8jj8pos5s05n" path="res://game/planet.gd" id="1_dyb3w"]
+[ext_resource type="Shader" uid="uid://ceqmf11nibv5b" path="res://game/starry_sky.gdshader" id="2_2e2cy"]
 [ext_resource type="Texture2D" uid="uid://bepqxwvdbbr6s" path="res://assets/CruS/Textures/RedWall.png" id="2_xp6eh"]
 
-[sub_resource type="Environment" id="Environment_yanxv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i4y1p"]
+shader = ExtResource("2_2e2cy")
+shader_parameter/sky_color = Color(0, 0, 0, 1)
+shader_parameter/star_base_color = Color(1, 1, 1, 1)
+shader_parameter/star_hue_offset = 0.0
+shader_parameter/star_intensity = 0.02
+shader_parameter/layer_scale = 20.0
+shader_parameter/layer_scale_step = 10.0
+shader_parameter/layers_count = 3
+
+[sub_resource type="Sky" id="Sky_xp6eh"]
+sky_material = SubResource("ShaderMaterial_i4y1p")
+
+[sub_resource type="Environment" id="Environment_2e2cy"]
+background_mode = 2
+sky = SubResource("Sky_xp6eh")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c7neo"]
 size = Vector3(100, 0.1, 100)
@@ -18,11 +36,20 @@ uv1_scale = Vector3(90, 90, 90)
 material = SubResource("StandardMaterial3D_xp6eh")
 size = Vector2(100, 100)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_yanxv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xp6eh"]
+
 [node name="Planet" type="Node3D"]
 script = ExtResource("1_dyb3w")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_yanxv")
+environment = SubResource("Environment_2e2cy")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.98633, 0)
+light_color = Color(0, 1, 0, 1)
+light_energy = 0.081
 
 [node name="FlatPlane (old)" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17.4574, 0)
@@ -38,5 +65,13 @@ skeleton = NodePath("../CollisionShape3D")
 [node name="Spawnpoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000106752, 0.201781, 0.000308216)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.98633, 0)
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.978, 20.7481, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_yanxv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("BoxMesh_xp6eh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
