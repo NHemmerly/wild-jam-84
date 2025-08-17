@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvyf64e30su4y"]
+[gd_scene load_steps=11 format=3 uid="uid://cvyf64e30su4y"]
 
 [ext_resource type="Script" uid="uid://beyn7h6uii0ix" path="res://game/ui/terrarium_ui.gd" id="1_n3l3h"]
 [ext_resource type="Script" uid="uid://4qfpw1jrejys" path="res://game/ui/hotbar.gd" id="2_g8p5x"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://cwjd0fgq7u5ct" path="res://game/ui/v_box_container.gd" id="4_0m4o3"]
 [ext_resource type="Script" uid="uid://c8cvk42a5evyu" path="res://game/ui/explore.gd" id="4_nfv30"]
 [ext_resource type="Script" uid="uid://b6y45yknemqeb" path="res://game/ui/progress_bar.gd" id="5_33vvm"]
+[ext_resource type="Script" uid="uid://cg2o2jkwifa5m" path="res://game/ui/inventory.gd" id="7_erfqh"]
+[ext_resource type="Script" uid="uid://b3lxvraah635c" path="res://game/ui/grid_container.gd" id="8_uyutt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_33vvm"]
 bg_color = Color(0, 1, 0, 1)
@@ -21,7 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+mouse_filter = 1
 script = ExtResource("1_n3l3h")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -132,8 +134,66 @@ theme_override_font_sizes/font_size = 48
 text = "Explore!"
 script = SubResource("GDScript_ofjix")
 
+[node name="inventory" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.899
+anchor_top = 0.198
+anchor_right = 1.0
+anchor_bottom = 0.772
+offset_left = -0.0800781
+offset_top = -7.84001
+offset_bottom = 13.24
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("7_erfqh")
+
+[node name="Panel" type="Panel" parent="inventory"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="inventory/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="inventory/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Inventory:"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="Panel" parent="inventory/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="inventory/Panel/VBoxContainer/MarginContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 13.0
+offset_right = -24.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="inventory/Panel/VBoxContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+columns = 2
+script = ExtResource("8_uyutt")
+
 [connection signal="mouse_entered" from="MarginContainer/Hotbar" to="." method="_on_h_box_container_mouse_entered"]
 [connection signal="mouse_exited" from="MarginContainer/Hotbar" to="." method="_on_h_box_container_mouse_exited"]
 [connection signal="mouse_entered" from="explore" to="." method="_on_explore_mouse_entered"]
 [connection signal="mouse_exited" from="explore" to="." method="_on_explore_mouse_exited"]
 [connection signal="pressed" from="explore/VBoxContainer/GoExplore" to="." method="_on_go_explore_pressed"]
+[connection signal="mouse_entered" from="inventory" to="." method="_on_inventory_mouse_entered"]
+[connection signal="mouse_exited" from="inventory" to="." method="_on_inventory_mouse_exited"]

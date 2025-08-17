@@ -33,7 +33,6 @@ size = Vector2(6, 6)
 [node name="Rock" type="RigidBody3D"]
 mass = 0.1
 gravity_scale = 0.01
-angular_damp = 4.0
 script = ExtResource("1_7didp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

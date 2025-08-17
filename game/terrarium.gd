@@ -7,6 +7,7 @@ var welcome_back_menu = load("res://menus/welcome_back.tscn").instantiate()
 
 func _ready():
 	var mob = Mob.instantiate()
+	mob.stats = load("res://mobs/resources/beauty-critter.tres").duplicate()
 	add_child(map)
 	add_child(mob)
 	$CanvasLayer.add_child(Ui.instantiate())
