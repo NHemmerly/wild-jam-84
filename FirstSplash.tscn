@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://c76gcgdnh8s2e"]
+
+[ext_resource type="Script" uid="uid://cu6sqa7un6h2i" path="res://FirstSplash.gd" id="1_s5v1b"]
+[ext_resource type="Texture2D" uid="uid://dutlaf1147pj5" path="res://assets/wild-jam/GWJ-Full-Logo-tag-4k.png" id="2_wu8qc"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s5v1b")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wu8qc")
+expand_mode = 1
+
+[node name="SplashTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="SplashTimer" to="." method="_on_splash_timer_timeout"]

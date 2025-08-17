@@ -56,7 +56,9 @@ func shoot_laser(color = Color.GREEN):
 		laser_exists = true
 		print(raycast_result["collider"].get_name())
 		if(raycast_result["collider"].get_name().contains("Rock") || raycast_result["collider"].get_name().contains("Rigid")):
-			raycast_result["collider"].apply_impulse(Vector3(1, 4, 1), raycast_result["position"])
+			var away = find_parent("Rover").basis.z
+			away.y += 2
+			raycast_result["collider"].apply_impulse(away, raycast_result["position"])
 		$Timer.start()
 
 func _input(event):
