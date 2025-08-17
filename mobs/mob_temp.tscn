@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://ccwv2t67g0nj4"]
 
 [ext_resource type="Script" uid="uid://cnkipjdmkv8ni" path="res://mobs/critter.gd" id="1_2jubo"]
-[ext_resource type="Resource" uid="uid://xpb8i1v586r2" path="res://mobs/resources/cool-critter.tres" id="2_rxuko"]
+[ext_resource type="Resource" uid="uid://c5sxj31p40ypv" path="res://mobs/resources/clever-critter.tres" id="2_4ik36"]
 [ext_resource type="Texture2D" uid="uid://l7pfs716wlx4" path="res://assets/terrarium/cool-critter.png" id="3_4ik36"]
 [ext_resource type="Script" uid="uid://caaxlwu28g2nj" path="res://utility/state_machine.gd" id="3_qtnva"]
 [ext_resource type="Script" uid="uid://q3yfh32rnvdk" path="res://states/idle.gd" id="4_w6mpm"]
@@ -15,11 +15,12 @@ size = Vector2(92, 57.25)
 radius = 60.0333
 
 [node name="critter" type="CharacterBody2D"]
+z_index = 1000
 texture_filter = 1
 scale = Vector2(2, 2)
 input_pickable = true
 script = ExtResource("1_2jubo")
-stats = ExtResource("2_rxuko")
+stats = ExtResource("2_4ik36")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 35.125)

@@ -9,23 +9,13 @@ class_name Player extends Node2D
 @export var welcome_back_menu: bool = false
 
 const TICK_RATE: float = 1.0
-const DRAIN_MOD: float = 5.0
-
-var cool_food = load("res://items/resources/cool-food.tres")
-var cute_food = load("res://items/resources/cute-food.tres")
-var tough_food = load("res://items/resources/tough-food.tres")
+const DRAIN_MOD: float = 20.0
 
 
 func _ready() -> void:
 	for i in range(inventory.max_size):
 		inventory.items.append(null)
-	# When adding items to inventory make sure they are duplicated
-	# allows them to be freed when updating inventory to clear
-	# empties
-	inventory.items[0] = cool_food.duplicate()
-	inventory.items[1] = cute_food.duplicate()
-	inventory.items[2] = tough_food.duplicate()
-	
+
 
 func _process(_delta: float) -> void:
 	var current_scene := get_tree().root.get_child(-1)
@@ -34,10 +24,18 @@ func _process(_delta: float) -> void:
 	elif !stats.in_terrarium():
 		update_planet_state()
 
+func spawn_critter(pos: Vector2) -> void:
+	var current_scene := get_tree().current_scene
+	var new_critter = load("res://mobs/mob_temp.tscn").instantiate()
+	current_scene.add_child(new_critter)
+	new_critter.position = pos
+	new_critter.stats = player_state.held_item.critter_item
+
 func enter_terrarium_state() -> void:
 	stats.current_state = stats.ActionState.NAV
+	if stats.batt_level <= 0.0:
+		stats.batt_level = 0.0
 	welcome_back_menu = true
-	
 	
 func update_terrarium_state() -> void:
 	if held_item != null:
@@ -53,7 +51,7 @@ func enter_planet_state() -> void:
 	
 func update_planet_state() -> void:
 	if battery_dead():
-		Global.goto_scene("res://game/terrarium.tscn")
+		Global.goto_scene("res://menus/welcome_back.tscn")
 		enter_terrarium_state()
 
 func battery_dead() -> bool:
@@ -71,10 +69,8 @@ func set_state(usage: int):
 			player_state.stats.current_state = Enums.ActionState.NAV	
 
 func update_inv() -> void:
-	var debug_array: Array[int]
 	for item in inventory.items:
 		if item != null:
-			debug_array.append(item.count)
 			if item.count <= 0:
 				item.free()
 	if held_item != null:

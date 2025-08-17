@@ -27,7 +27,7 @@ enum Type {
 @export var base_restore: float = 10
 @export var likes_restore_scale: float = 1.5
 @export var hates_restore_scale: float = 0.5
-@export var critter_item: CritterRes
+@export var critter_item: CritterRes = null
 
 func _init() -> void:
 	set_type_string()
@@ -50,3 +50,8 @@ func is_food() -> bool:
 	
 func is_toy() -> bool:
 	return usage == ItemUse.PLAYTHING
+	
+func is_critter() -> bool:
+	# Time crunch change Decor to Critter eventually
+	return usage == ItemUse.DECOR
+	

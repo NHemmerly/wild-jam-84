@@ -1,4 +1,5 @@
-class_name terrain extends MeshInstance3D
+#@tool
+extends MeshInstance3D
 
 const SIZE := 256.0
 const MIN_COORD := -128.0
@@ -8,22 +9,30 @@ const MOBS_FOLDER := "res://mobs/resources/"
 const ITEMS_FOLDER := "res://items/resources/"
 
 var rand_items: Array = []
-var height := 4
-var resolution := 36
-var spawnpoint_pos: float
-var rng = RandomNumberGenerator.new()
+
+@export var resolution := 32:
+	set(new_resolution):
+		resolution = new_resolution
+		update_mesh()
 		
-var noise: FastNoiseLite: 
+@export var noise: FastNoiseLite: 
 	set(new_noise):
 		noise = new_noise
 		update_mesh()
 		if noise:
 			noise.changed.connect(update_mesh)
 			
+@export var height := 64.0:
+	set(new_height):
+		height = new_height
+		material_override.set_shader_parameter("height", height * 2.0)
+		update_mesh()
+
+var spawnpoint_pos: float
+var rng = RandomNumberGenerator.new()
 
 func _ready():
-	print("rockify")
-	rockify(global_position)
+	rockify()
 
 func get_height(x: float, y: float) -> float:
 	return noise.get_noise_2d(x, y) * height
@@ -88,20 +97,21 @@ func access_dir(path: String) -> String:
 	
 func load_rand_items() -> void:
 	for i in range(10):
-		if rng.randi_range(1, 100) > 75:
+		if rng.randi_range(1, 100) > 0:
 			var critter_path = access_dir(MOBS_FOLDER)
 			var temp_item: Item = Item.new()
 			temp_item.critter_item = load(critter_path).duplicate()
 			temp_item.icon = temp_item.critter_item.sprite
+			temp_item.usage = temp_item.ItemUse.DECOR
 			rand_items.append(temp_item.duplicate())
 		else:
 			var rand_item = load(access_dir(ITEMS_FOLDER)).duplicate()
 			rand_items.append(rand_item)
 	
-func rockify(offset := Vector3(0,0,0)):
+func rockify():
 	load_rand_items()
 	for i in range(10):
 		var rock1 = load("res://game/rock.tscn").instantiate()
 		add_child(rock1)
 		rock1.hidden_item = rand_items[i]
-		rock1.global_position = Vector3(make_rand_floats(), 1, make_rand_floats()) + offset
+		rock1.global_position = Vector3(make_rand_floats(), 1, make_rand_floats())
