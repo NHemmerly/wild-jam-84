@@ -3,12 +3,13 @@ class_name Player extends Node2D
 @export var score := 0
 @export var inventory: Inventory
 @export var explore_inv: Inventory
+@export var terrarium_inv: Inventory
 @export var stats: PlayerStats
 @export var held_item: Item
 @export var welcome_back_menu: bool = false
 
 const TICK_RATE: float = 1.0
-const DRAIN_MOD: float = 3.0
+const DRAIN_MOD: float = 5.0
 
 var cool_food = load("res://items/resources/cool-food.tres")
 var cute_food = load("res://items/resources/cute-food.tres")
