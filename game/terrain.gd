@@ -22,7 +22,8 @@ var noise: FastNoiseLite:
 			
 
 func _ready():
-	rockify(position)
+	print("rockify")
+	rockify(global_position)
 
 func get_height(x: float, y: float) -> float:
 	return noise.get_noise_2d(x, y) * height

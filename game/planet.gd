@@ -13,7 +13,7 @@ func _ready():
 			temp_chunk = terrain.new()
 			temp_chunk.noise = planet_noise
 			#temp_chunk.offset += Vector3(256-(256*c), 0, 256-(256*r))
-			extend_terrain(Vector3(256-(256*c), 0, 256-(256*r)))
+			extend_terrain(Vector3(256-(256*c), 0, 256-(256*r)), temp_chunk)
 			chunks.append(temp_chunk)
 	load_chunks()
 	$planet_ui.add_child(ui)
@@ -24,9 +24,8 @@ func _ready():
 	$Spawnpoint.position = Vector3(0, 5, 0)
 	planet_rover.position = $Spawnpoint.position
 
-func extend_terrain(offset: Vector3 ):
+func extend_terrain(offset: Vector3, new_terrain):
 	#var new_terrain = load("res://game/terrain.tscn").instantiate()
-	var new_terrain = terrain.new()
 	new_terrain.noise = planet_noise
 	new_terrain.noise.offset += offset
 	new_terrain.position = offset
