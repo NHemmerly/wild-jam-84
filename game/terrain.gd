@@ -1,7 +1,14 @@
-@tool
+#@tool
 extends MeshInstance3D
 
 const SIZE := 256.0
+const MIN_COORD := -128.0
+const MAX_COORD := 128.0
+
+const MOBS_FOLDER := "res://mobs/resources/"
+const ITEMS_FOLDER := "res://items/resources/"
+
+var rand_items: Array = []
 
 @export var resolution := 32:
 	set(new_resolution):
@@ -22,6 +29,10 @@ const SIZE := 256.0
 		update_mesh()
 
 var spawnpoint_pos: float
+var rng = RandomNumberGenerator.new()
+
+func _ready():
+	rockify()
 
 func get_height(x: float, y: float) -> float:
 	return noise.get_noise_2d(x, y) * height
@@ -65,7 +76,6 @@ func update_mesh():
 	mesh = array_mesh
 	
 	update_collision()
-	#rockify()
 
 func update_collision():
 	for n in get_children():
@@ -74,7 +84,33 @@ func update_collision():
 			n.queue_free()
 	create_trimesh_collision()
 	
-#func rockify():
-	#var rock1 = load("res://game/rock.tscn").instantiate()
-	#rock1.global_position = Vector3(1,1,1)
-	#add_child(rock1)
+func make_rand_floats() -> float:
+	return rng.randf_range(MIN_COORD, MAX_COORD)
+	
+func access_dir(path: String) -> String:
+	var dir = DirAccess.open(path)
+	var file_names := dir.get_files()
+	var rand_item = file_names[rng.randi_range(0, len(file_names) - 1)]
+	print(path + rand_item)
+	return (path + rand_item)
+			
+	
+func load_rand_items() -> void:
+	for i in range(10):
+		if rng.randi_range(1, 100) > 75:
+			var critter_path = access_dir(MOBS_FOLDER)
+			var temp_item: Item = Item.new()
+			temp_item.critter_item = load(critter_path).duplicate()
+			temp_item.icon = temp_item.critter_item.sprite
+			rand_items.append(temp_item.duplicate())
+		else:
+			var rand_item = load(access_dir(ITEMS_FOLDER)).duplicate()
+			rand_items.append(rand_item)
+	
+func rockify():
+	load_rand_items()
+	for i in range(10):
+		var rock1 = load("res://game/rock.tscn").instantiate()
+		add_child(rock1)
+		rock1.hidden_item = rand_items[i]
+		rock1.global_position = Vector3(make_rand_floats(), 1, make_rand_floats())

@@ -2,6 +2,7 @@ class_name Player extends Node2D
 
 @export var score := 0
 @export var inventory: Inventory
+@export var explore_inv: Inventory
 @export var stats: PlayerStats
 @export var held_item: Item
 @export var welcome_back_menu: bool = false

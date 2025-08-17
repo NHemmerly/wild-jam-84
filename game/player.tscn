@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctub2dtdq8n2n"]
+[gd_scene load_steps=8 format=3 uid="uid://ctub2dtdq8n2n"]
 
 [ext_resource type="Script" uid="uid://cgpfbvpab1vt6" path="res://game/player.gd" id="1_dadds"]
 [ext_resource type="Script" uid="uid://dgtq1v27v0gt5" path="res://items/item_class.gd" id="2_d631c"]
 [ext_resource type="Script" uid="uid://2hn3hj5wvq7s" path="res://items/inventory_res.gd" id="3_4fto2"]
 [ext_resource type="Resource" uid="uid://d2cw0qncvsrg5" path="res://game/player_stats.tres" id="3_du4nq"]
+[ext_resource type="Resource" uid="uid://c3fcra6rb628" path="res://items/explore_inv.tres" id="4_d631c"]
 
 [sub_resource type="Resource" id="Resource_wkljg"]
 resource_local_to_scene = true
@@ -20,6 +21,7 @@ script/source = "extends CanvasLayer
 z_index = 100
 script = ExtResource("1_dadds")
 inventory = SubResource("Resource_wkljg")
+explore_inv = ExtResource("4_d631c")
 stats = ExtResource("3_du4nq")
 
 [node name="layering" type="CanvasLayer" parent="."]

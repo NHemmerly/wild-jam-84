@@ -27,6 +27,7 @@ enum Type {
 @export var base_restore: float = 10
 @export var likes_restore_scale: float = 1.5
 @export var hates_restore_scale: float = 0.5
+@export var critter_item: CritterRes
 
 func _init() -> void:
 	set_type_string()

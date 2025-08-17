@@ -9,7 +9,7 @@ enum Type {
 	TOUGHNESS,
 	COUNT
 }
-
+@export var name: String
 @export var type: Type
 @export var t_string: String
 @export var speed: float

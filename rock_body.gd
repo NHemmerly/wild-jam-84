@@ -1,5 +1,8 @@
 extends RigidBody3D
 
+@export var hidden_item: Item
+var active: bool = true
+
 var hiding_critter
 	
 func _init() -> void:
@@ -30,10 +33,12 @@ func locked(locked):
 #
 #func _on_body_entered(body: Node) -> void:
 	#apply_impulse(Vector3(100, 100 ,100))
-
+	
 
 func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	#if InputEventMouseButton && event.pressed() && event.button_index == MOUSE_BUTTON_LEFT:
-	if Input.is_action_just_pressed("click"):
+	if Input.is_action_just_pressed("click") && active:
+		active = false
 		locked(false)
 		apply_impulse(Vector3(2, 2, 2)) # Replace with function body.
+		player_state.explore_inv.items.append(hidden_item)

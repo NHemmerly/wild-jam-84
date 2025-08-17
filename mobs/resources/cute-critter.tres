@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_kx843")
+name = "chicky"
 type = 2
 t_string = ""
 speed = 100.0

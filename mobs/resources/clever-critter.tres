@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_nwoel")
+name = "supreme being"
 type = 3
 t_string = ""
 speed = 100.0

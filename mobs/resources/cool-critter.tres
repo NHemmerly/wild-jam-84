@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_vv008")
+name = "big gayta"
 type = 0
 t_string = ""
 speed = 100.0

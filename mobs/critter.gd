@@ -57,8 +57,8 @@ func calculate_status_restore() -> void:
 		stats.happiness -= fed_item.base_restore + fed_item.hates_restore_scale
 
 func distance_wrap(a: int, b: int) -> int:
+	# something about this isn't working, doesn't really matter tho 
 	var distance = abs(a - b) % (stats.Type.COUNT - 1)
-	print(distance)
 	return distance
 	
 func likes_item() -> bool:

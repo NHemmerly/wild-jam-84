@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8sm1n4j0ir4w"]
+[gd_scene load_steps=6 format=3 uid="uid://b8sm1n4j0ir4w"]
 
 [ext_resource type="Theme" uid="uid://bjbh62daosxfr" path="res://menus/opaque_bg.tres" id="1_kdcs7"]
 [ext_resource type="Theme" uid="uid://dteq8ivqhl0rr" path="res://menus/background_color.tres" id="2_60w4q"]
 [ext_resource type="Script" uid="uid://b6iqk464rv10x" path="res://menus/welcome_back.gd" id="2_gtpj1"]
+[ext_resource type="Script" uid="uid://cyc3lkd0u0p5k" path="res://menus/welcome_back_items.gd" id="4_4nqkm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nqkm"]
 bg_color = Color(0.113297, 0.175781, 0.127453, 1)
@@ -92,6 +93,7 @@ size_flags_horizontal = 3
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 12
+script = ExtResource("4_4nqkm")
 
 [node name="great!" type="Button" parent="MarginContainer/Panel/Panel/VBoxContainer"]
 layout_mode = 2

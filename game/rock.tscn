@@ -30,30 +30,26 @@ albedo_texture = ExtResource("2_exgsa")
 material = SubResource("StandardMaterial3D_wecdg")
 size = Vector2(6, 6)
 
-[node name="Rock" type="Node3D"]
-
-[node name="RockBody" type="RigidBody3D" parent="."]
+[node name="Rock" type="RigidBody3D"]
 mass = 0.1
 gravity_scale = 0.01
 script = ExtResource("1_7didp")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RockBody"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000102222, 0)
 mesh = SubResource("SphereMesh_b4wt3")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RockBody"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000102222, 0)
 shape = SubResource("ConcavePolygonShape3D_exgsa")
 
 [node name="CritterMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 2.13163e-14, 0, -2.13163e-14, 1, 0, 0, 0, 1, 0, 0.003, 0)
 mesh = SubResource("PlaneMesh_b4wt3")
-skeleton = NodePath("../RockBody")
 script = SubResource("GDScript_68h2w")
 
 [node name="HoleMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000111729, 0.00135624, -0.000207134)
 mesh = SubResource("PlaneMesh_46y1q")
-skeleton = NodePath("../RockBody")
 
-[connection signal="input_event" from="RockBody" to="RockBody" method="_on_input_event"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]

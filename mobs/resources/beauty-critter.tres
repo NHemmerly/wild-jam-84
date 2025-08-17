@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_44cep")
+name = "pretty cat"
 type = 1
 t_string = ""
 speed = 100.0
