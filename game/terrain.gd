@@ -3,7 +3,7 @@ extends MeshInstance3D
 
 const SIZE := 256.0
 
-@export_range(4, 256, 4) var resolution := 32:
+@export var resolution := 32:
 	set(new_resolution):
 		resolution = new_resolution
 		update_mesh()
@@ -15,7 +15,7 @@ const SIZE := 256.0
 		if noise:
 			noise.changed.connect(update_mesh)
 			
-@export_range(4, 128, 4) var height := 64.0:
+@export var height := 64.0:
 	set(new_height):
 		height = new_height
 		material_override.set_shader_parameter("height", height * 2.0)
@@ -65,9 +65,16 @@ func update_mesh():
 	mesh = array_mesh
 	
 	update_collision()
+	#rockify()
 
 func update_collision():
 	for n in get_children():
-		remove_child(n)
-		n.queue_free()
+		if n.name.contains("col"):
+			remove_child(n)
+			n.queue_free()
 	create_trimesh_collision()
+	
+#func rockify():
+	#var rock1 = load("res://game/rock.tscn").instantiate()
+	#rock1.global_position = Vector3(1,1,1)
+	#add_child(rock1)

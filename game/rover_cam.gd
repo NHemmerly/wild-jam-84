@@ -7,7 +7,6 @@ func aim_laser():
 	var mouse_pos = get_viewport().get_mouse_position()
 	$LaserBarrelStart.look_at(project_ray_normal(mouse_pos) * LASER_LENGTH)
 
-
 func shoot_laser(color = Color.GREEN):
 	const LASER_LENGTH = 1000
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -20,6 +19,7 @@ func shoot_laser(color = Color.GREEN):
 	var raycast_result = space.intersect_ray(ray_query)
 
 	if !raycast_result.is_empty() && !laser_exists:
+		print(raycast_result)
 		#print(raycast_result)
 		var mesh_instance := Laser.new()
 		var immediate_mesh := ImmediateMesh.new()

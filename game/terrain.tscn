@@ -44,18 +44,15 @@ data = PackedVector3Array(128, 0.3558, 128, 121.081, 0.0411, 128, 128, 0.1355, 1
 
 [node name="Node3D" type="Node3D"]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="Terrain" type="MeshInstance3D" parent="StaticBody3D"]
+[node name="Terrain" type="MeshInstance3D" parent="."]
 material_override = SubResource("ShaderMaterial_e1kr5")
 mesh = SubResource("ArrayMesh_my4be")
-skeleton = NodePath("../..")
 script = ExtResource("2_xi4le")
 resolution = 36
 noise = SubResource("FastNoiseLite_iqhxt")
 height = 4.0
 
-[node name="Terrain_col" type="StaticBody3D" parent="StaticBody3D/Terrain"]
+[node name="Terrain_col" type="StaticBody3D" parent="Terrain"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Terrain/Terrain_col"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/Terrain_col"]
 shape = SubResource("ConcavePolygonShape3D_xi4le")

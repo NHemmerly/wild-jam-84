@@ -14,4 +14,4 @@ func _ready():
 	#$Spawnpoint.position = Vector3(0, terrain.get_node("../StaticBody3D/Terrain").spawnpoint_pos, 0)
 	$Spawnpoint.position = Vector3(0, 5, 0)
 	planet_rover.position = $Spawnpoint.position
-	rock.position = Vector3(0.1, 0, 0.2)
+	rock.position = Vector3(7, terrain.get_child(0).get_height(7, 7), 7)
