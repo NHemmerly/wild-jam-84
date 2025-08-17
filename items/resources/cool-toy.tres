@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bqlnn2whh65pb"]
+
+[ext_resource type="Script" uid="uid://dgtq1v27v0gt5" path="res://items/item_class.gd" id="1_qhrj1"]
+[ext_resource type="Texture2D" uid="uid://du76i85wltqk1" path="res://assets/terrarium/cool-toy.png" id="1_ths0q"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_qhrj1")
+name = "Controller"
+type = 0
+t_string = ""
+usage = 2
+icon = ExtResource("1_ths0q")
+count = 1
+base_restore = 10.0
+likes_restore_scale = 1.5
+hates_restore_scale = 0.5
+metadata/_custom_type_script = "uid://dgtq1v27v0gt5"

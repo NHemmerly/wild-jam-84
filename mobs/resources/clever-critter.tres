@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CritterRes" load_steps=3 format=3 uid="uid://c5sxj31p40ypv"]
+
+[ext_resource type="Script" uid="uid://cev2g7j86eawx" path="res://mobs/critter_res.gd" id="1_nwoel"]
+[ext_resource type="Texture2D" uid="uid://cp2y38kdj1w1s" path="res://assets/terrarium/clever-critter.png" id="2_h3vr8"]
+
+[resource]
+script = ExtResource("1_nwoel")
+type = 3
+t_string = ""
+speed = 100.0
+speed_scale = 3
+happiness = 100.0
+hunger = 100.0
+happiness_rate = 1.0
+hunger_rate = 1.0
+status_max = 100.0
+sprite = ExtResource("2_h3vr8")
+metadata/_custom_type_script = "uid://cev2g7j86eawx"

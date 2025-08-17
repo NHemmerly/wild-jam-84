@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2yyubihprx2w"
 path.s3tc="res://.godot/imported/samplecritter.png-b68e98d3c165919e834eb82cb360d14e.s3tc.ctex"
+path.etc2="res://.godot/imported/samplecritter.png-b68e98d3c165919e834eb82cb360d14e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/samplecritter.png"
-dest_files=["res://.godot/imported/samplecritter.png-b68e98d3c165919e834eb82cb360d14e.s3tc.ctex"]
+dest_files=["res://.godot/imported/samplecritter.png-b68e98d3c165919e834eb82cb360d14e.s3tc.ctex", "res://.godot/imported/samplecritter.png-b68e98d3c165919e834eb82cb360d14e.etc2.ctex"]
 
 [params]
 

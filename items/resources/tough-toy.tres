@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://rq0v5v6oopvu"]
+
+[ext_resource type="Texture2D" uid="uid://cfwhwbspveima" path="res://assets/terrarium/tough-toy.png" id="1_pm0d4"]
+[ext_resource type="Script" uid="uid://dgtq1v27v0gt5" path="res://items/item_class.gd" id="1_u2quo"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_u2quo")
+name = "Dumbell"
+type = 4
+t_string = ""
+usage = 2
+icon = ExtResource("1_pm0d4")
+count = 1
+base_restore = 10.0
+likes_restore_scale = 1.5
+hates_restore_scale = 0.5
+metadata/_custom_type_script = "uid://dgtq1v27v0gt5"

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bgctgwxltkw53"]
+
+[ext_resource type="Texture2D" uid="uid://q26unbmsovme" path="res://assets/terrarium/clever-toy.png" id="1_5vuub"]
+[ext_resource type="Script" uid="uid://dgtq1v27v0gt5" path="res://items/item_class.gd" id="1_171hg"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_171hg")
+name = "Calculator"
+type = 3
+t_string = ""
+usage = 2
+icon = ExtResource("1_5vuub")
+count = 1
+base_restore = 10.0
+likes_restore_scale = 1.5
+hates_restore_scale = 0.5
+metadata/_custom_type_script = "uid://dgtq1v27v0gt5"

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CritterRes" load_steps=3 format=3 uid="uid://bvuas3icid88a"]
+
+[ext_resource type="Script" uid="uid://cev2g7j86eawx" path="res://mobs/critter_res.gd" id="1_44cep"]
+[ext_resource type="Texture2D" uid="uid://d12y1ummphs38" path="res://assets/terrarium/beauty-critter.png" id="2_kvtue"]
+
+[resource]
+script = ExtResource("1_44cep")
+type = 1
+t_string = ""
+speed = 100.0
+speed_scale = 2
+happiness = 100.0
+hunger = 100.0
+happiness_rate = 1.0
+hunger_rate = 1.0
+status_max = 100.0
+sprite = ExtResource("2_kvtue")
+metadata/_custom_type_script = "uid://cev2g7j86eawx"

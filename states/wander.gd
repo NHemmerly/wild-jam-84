@@ -1,8 +1,8 @@
 extends CritterState
 
 func enter(_previous_state_path: String, _data := {}) -> void:
-	critter.velocity.y = -1 * critter.stats.speed
-	critter.velocity.x = 1 * critter.stats.speed
+	critter.velocity.y = critter.go_wander() * critter.stats.speed
+	critter.velocity.x = critter.go_wander() * critter.stats.speed
 	critter.wanderCd.start()
 
 func physics_update(_delta: float) -> void:

@@ -1,24 +1,35 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccwv2t67g0nj4"]
+[gd_scene load_steps=10 format=3 uid="uid://ccwv2t67g0nj4"]
 
 [ext_resource type="Script" uid="uid://cnkipjdmkv8ni" path="res://mobs/critter.gd" id="1_2jubo"]
-[ext_resource type="Resource" uid="uid://xpb8i1v586r2" path="res://mobs/critter_1.tres" id="2_rxuko"]
+[ext_resource type="Resource" uid="uid://xpb8i1v586r2" path="res://mobs/resources/cool-critter.tres" id="2_rxuko"]
+[ext_resource type="Texture2D" uid="uid://l7pfs716wlx4" path="res://assets/terrarium/cool-critter.png" id="3_4ik36"]
 [ext_resource type="Script" uid="uid://caaxlwu28g2nj" path="res://utility/state_machine.gd" id="3_qtnva"]
 [ext_resource type="Script" uid="uid://q3yfh32rnvdk" path="res://states/idle.gd" id="4_w6mpm"]
 [ext_resource type="Script" uid="uid://cui1i2u0ef8ic" path="res://states/wander.gd" id="5_4ik36"]
 [ext_resource type="Script" uid="uid://dx270lx4ykkhl" path="res://states/feeding.gd" id="6_w6mpm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ifc8"]
-size = Vector2(128, 128)
+size = Vector2(92, 57.25)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ik36"]
+radius = 60.0333
 
 [node name="critter" type="CharacterBody2D"]
+texture_filter = 1
+scale = Vector2(2, 2)
 input_pickable = true
 script = ExtResource("1_2jubo")
 stats = ExtResource("2_rxuko")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 35.125)
 shape = SubResource("RectangleShape2D_7ifc8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-3.8147e-06, -2.38419e-07)
+scale = Vector2(4, 4)
+texture = ExtResource("3_4ik36")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -51,7 +62,13 @@ offset_top = -134.0
 offset_right = 29.0
 offset_bottom = -98.0
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[node name="feedBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="feedBox"]
+position = Vector2(0.5, 0)
+shape = SubResource("CircleShape2D_4ik36")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="status_tickdown" to="." method="_on_status_tickdown_timeout"]
+[connection signal="mouse_entered" from="feedBox" to="." method="_on_feed_box_mouse_entered"]
+[connection signal="mouse_exited" from="feedBox" to="." method="_on_feed_box_mouse_exited"]

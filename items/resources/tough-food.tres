@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://4tjt64rrqc88"]
+
+[ext_resource type="Script" uid="uid://dgtq1v27v0gt5" path="res://items/item_class.gd" id="1_jm41x"]
+[ext_resource type="Texture2D" uid="uid://dx1la41cjuao1" path="res://assets/terrarium/tough-food.png" id="1_k47gq"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_jm41x")
+name = "Chicken Wing"
+type = 4
+t_string = ""
+usage = 0
+icon = ExtResource("1_k47gq")
+count = 1
+base_restore = 10.0
+likes_restore_scale = 1.5
+hates_restore_scale = 0.5
+metadata/_custom_type_script = "uid://dgtq1v27v0gt5"

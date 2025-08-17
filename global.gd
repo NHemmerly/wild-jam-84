@@ -2,6 +2,8 @@ extends Node
 
 var current_scene = null
 
+
+
 func _ready():
 	var root = get_tree().root
 	# Get final scene in tree (should always be the currently loaded scene)

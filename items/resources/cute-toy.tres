@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://buep6njfrfrqt"]
+
+[ext_resource type="Script" uid="uid://dgtq1v27v0gt5" path="res://items/item_class.gd" id="1_dx15d"]
+[ext_resource type="Texture2D" uid="uid://cgrtaufv2j2i1" path="res://assets/terrarium/cute-toy.png" id="1_v7e1h"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_dx15d")
+name = "Teddy Bear"
+type = 2
+t_string = ""
+usage = 2
+icon = ExtResource("1_v7e1h")
+count = 1
+base_restore = 10.0
+likes_restore_scale = 1.5
+hates_restore_scale = 0.5
+metadata/_custom_type_script = "uid://dgtq1v27v0gt5"

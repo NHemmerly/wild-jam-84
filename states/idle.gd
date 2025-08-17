@@ -2,7 +2,7 @@ extends CritterState
 
 
 func enter(_previous_state_path: String, _data := {}) -> void:
-	critter.velocity.x = 0.0
+	critter.velocity = Vector2.ZERO
 	critter.wanderCd.start(2)
 
 func physics_update(_delta: float) -> void:

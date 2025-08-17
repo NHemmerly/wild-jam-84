@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cfx5xcb6qsngb"]
+
+[ext_resource type="Script" uid="uid://dgtq1v27v0gt5" path="res://items/item_class.gd" id="1_7iicf"]
+[ext_resource type="Texture2D" uid="uid://1n5y413yjb5g" path="res://assets/terrarium/beauty-toy.png" id="1_vy6l0"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_7iicf")
+name = "Brush"
+type = 1
+t_string = ""
+usage = 2
+icon = ExtResource("1_vy6l0")
+count = 1
+base_restore = 10.0
+likes_restore_scale = 1.5
+hates_restore_scale = 0.5
+metadata/_custom_type_script = "uid://dgtq1v27v0gt5"

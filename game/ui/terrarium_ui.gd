@@ -40,12 +40,12 @@ func _on_h_box_container_mouse_exited() -> void:
 
 
 func _on_explore_mouse_entered() -> void:
-	for child in $explore/VBoxContainer.get_children():
+	for child in $explore.get_children():
 		child.modulate.a = 1.0
 
 
 func _on_explore_mouse_exited() -> void:
-	for child in $explore/VBoxContainer.get_children():
+	for child in $explore.get_children():
 		child.modulate.a = 0.0
 
 

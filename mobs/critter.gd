@@ -14,9 +14,10 @@ class_name Critter extends CharacterBody2D
 @onready var statusTime = $status_tickdown
 @onready var fsm = $StateMachine
 @onready var label = $Label # Debug
+var rng = RandomNumberGenerator.new()
 
 # make scaler lower to make scaling more dramatic, higher for less
-const SCALER := 0.85
+const SCALER := 1.0
 const TICK_RATE := 1.0
 
 func _ready() -> void:
@@ -86,15 +87,19 @@ func tick_stats(stat: float, rate: float) -> float:
 	stat -= rate
 	return snapped(stat, 0.01)
 	
+func go_wander():
+	return rng.randf_range(-1.0, 1.0)
+	
 func _on_timer_timeout() -> void:
 	timer_done = true
 
 func _on_status_tickdown_timeout() -> void:
 	stats.hunger = tick_stats(stats.hunger, stats.hunger_rate)
 	stats.happiness = tick_stats(stats.happiness, stats.happiness_rate)
-	
-func _on_mouse_entered() -> void:
+
+func _on_feed_box_mouse_entered() -> void:
 	mouse_inside = true
-	
-func _on_mouse_exited() -> void:
+
+
+func _on_feed_box_mouse_exited() -> void:
 	mouse_inside = false
