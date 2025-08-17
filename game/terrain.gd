@@ -97,7 +97,7 @@ func access_dir(path: String) -> String:
 	
 func load_rand_items() -> void:
 	for i in range(10):
-		if rng.randi_range(1, 100) > 0:
+		if rng.randi_range(1, 100) > 95:
 			var critter_path = access_dir(MOBS_FOLDER)
 			var temp_item: Item = Item.new()
 			temp_item.critter_item = load(critter_path).duplicate()

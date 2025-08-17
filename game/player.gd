@@ -9,7 +9,7 @@ class_name Player extends Node2D
 @export var welcome_back_menu: bool = false
 
 const TICK_RATE: float = 1.0
-const DRAIN_MOD: float = 20.0
+const DRAIN_MOD: float = 10.0
 
 
 func _ready() -> void:
@@ -23,6 +23,9 @@ func _process(_delta: float) -> void:
 		update_terrarium_state()
 	elif !stats.in_terrarium():
 		update_planet_state()
+	if Input.is_action_just_pressed("click") && \
+		stats.current_state == stats.ActionState.DECORATING:
+			spawn_critter(get_global_mouse_position())
 
 func spawn_critter(pos: Vector2) -> void:
 	var current_scene := get_tree().current_scene
@@ -30,6 +33,8 @@ func spawn_critter(pos: Vector2) -> void:
 	current_scene.add_child(new_critter)
 	new_critter.position = pos
 	new_critter.stats = player_state.held_item.critter_item
+	player_state.held_item = null
+	stats.current_state == stats.ActionState.NAV
 
 func enter_terrarium_state() -> void:
 	stats.current_state = stats.ActionState.NAV

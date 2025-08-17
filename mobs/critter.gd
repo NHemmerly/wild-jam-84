@@ -2,7 +2,7 @@ class_name Critter extends CharacterBody2D
 
 # Movement and scaling
 @export var stats: CritterRes
-@export var start_y = 0
+@export var start_y = 846
 @export var timer_done = false
 @export var tick_update = false
 @export var hold_position := Vector2.ZERO
@@ -12,8 +12,7 @@ class_name Critter extends CharacterBody2D
 # Variables for state
 @onready var wanderCd = $Timer
 @onready var statusTime = $status_tickdown
-@onready var fsm = $StateMachine
-@onready var label = $Label # Debug
+
 var rng = RandomNumberGenerator.new()
 
 # make scaler lower to make scaling more dramatic, higher for less
@@ -22,10 +21,6 @@ const TICK_RATE := 1.0
 
 func _ready() -> void:
 	$Sprite2D.texture = stats.sprite	
-	
-func _process(_delta: float) -> void:
-	label.text = str(stats.happiness) # Debug
-	$state_label.text = fsm.state.name
 	
 func update():
 	scale_size()
