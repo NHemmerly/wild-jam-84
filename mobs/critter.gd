@@ -23,7 +23,6 @@ const TICK_RATE := 1.0
 func _ready() -> void:
 	$Sprite2D.texture = stats.sprite	
 	
-
 func _process(_delta: float) -> void:
 	label.text = str(stats.happiness) # Debug
 	$state_label.text = fsm.state.name
@@ -45,7 +44,6 @@ func feed():
 		player_state.held_item.count -= 1
 		player_state.update_inv()
 	
-
 func calculate_status_restore() -> void:
 	var fed_item = player_state.held_item
 	if fed_item.type == stats.type: # critter likes food
@@ -59,7 +57,18 @@ func calculate_status_restore() -> void:
 		stats.happiness -= fed_item.base_restore + fed_item.hates_restore_scale
 
 func distance_wrap(a: int, b: int) -> int:
-	return abs(a - b) % (stats.Type.COUNT - 1)
+	var distance = abs(a - b) % (stats.Type.COUNT - 1)
+	print(distance)
+	return distance
+	
+func likes_item() -> bool:
+	return player_state.held_item.type == stats.type
+	
+func hates_item() -> bool:
+	return distance_wrap(player_state.held_item.type, stats.type) == 2
+	
+func neutral_item() -> bool:
+	return distance_wrap(player_state.held_item.type, stats.type) == 1
 
 func cull_greater_than_max(stat: float) -> float:
 	if stat > stats.status_max:
@@ -99,7 +108,6 @@ func _on_status_tickdown_timeout() -> void:
 
 func _on_feed_box_mouse_entered() -> void:
 	mouse_inside = true
-
 
 func _on_feed_box_mouse_exited() -> void:
 	mouse_inside = false

@@ -48,30 +48,39 @@ script = ExtResource("2_g8p5x")
 
 [node name="hotbar_slot" parent="MarginContainer/Hotbar" instance=ExtResource("3_g8p5x")]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="hotbar_slot2" parent="MarginContainer/Hotbar" instance=ExtResource("3_g8p5x")]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="hotbar_slot3" parent="MarginContainer/Hotbar" instance=ExtResource("3_g8p5x")]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="hotbar_slot4" parent="MarginContainer/Hotbar" instance=ExtResource("3_g8p5x")]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="hotbar_slot5" parent="MarginContainer/Hotbar" instance=ExtResource("3_g8p5x")]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="hotbar_slot6" parent="MarginContainer/Hotbar" instance=ExtResource("3_g8p5x")]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="hotbar_slot7" parent="MarginContainer/Hotbar" instance=ExtResource("3_g8p5x")]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="hotbar_slot8" parent="MarginContainer/Hotbar" instance=ExtResource("3_g8p5x")]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="hotbar_slot9" parent="MarginContainer/Hotbar" instance=ExtResource("3_g8p5x")]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="explore" type="MarginContainer" parent="."]
 layout_mode = 1

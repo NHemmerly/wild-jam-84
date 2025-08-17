@@ -4,11 +4,15 @@ class_name Player extends Node2D
 @export var inventory: Inventory
 @export var stats: PlayerStats
 @export var held_item: Item
+@export var welcome_back_menu: bool = false
 
 const TICK_RATE: float = 1.0
+const DRAIN_MOD: float = 3.0
 
-var mason_candy = load("res://items/mason_candy.tres")
-var test_item = load("res://items/trash_item.tres")
+var cool_food = load("res://items/resources/cool-food.tres")
+var cute_food = load("res://items/resources/cute-food.tres")
+var tough_food = load("res://items/resources/tough-food.tres")
+
 
 func _ready() -> void:
 	for i in range(inventory.max_size):
@@ -16,10 +20,10 @@ func _ready() -> void:
 	# When adding items to inventory make sure they are duplicated
 	# allows them to be freed when updating inventory to clear
 	# empties
-	inventory.items[0] = mason_candy.duplicate()
-	inventory.items[1] = mason_candy.duplicate()
-	inventory.items[2] = mason_candy.duplicate()
-	inventory.items[3] = test_item.duplicate()
+	inventory.items[0] = cool_food.duplicate()
+	inventory.items[1] = cute_food.duplicate()
+	inventory.items[2] = tough_food.duplicate()
+	
 
 func _process(_delta: float) -> void:
 	var current_scene := get_tree().root.get_child(-1)
@@ -30,6 +34,8 @@ func _process(_delta: float) -> void:
 
 func enter_terrarium_state() -> void:
 	stats.current_state = stats.ActionState.NAV
+	welcome_back_menu = true
+	
 	
 func update_terrarium_state() -> void:
 	if held_item != null:
@@ -74,7 +80,7 @@ func update_inv() -> void:
 			held_item = null
 
 func drain_battery() -> void:
-	stats.batt_level -= TICK_RATE
+	stats.batt_level -= TICK_RATE * DRAIN_MOD
 	snapped(stats.batt_level, 0.01)
 	
 func recharge_battery() -> void:

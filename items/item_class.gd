@@ -43,3 +43,9 @@ func set_type_string() -> void:
 			t_string = "Toughness"
 		Type.CUTENESS:
 			t_string = "Cuteness"
+			
+func is_food() -> bool:
+	return usage == ItemUse.FOOD
+	
+func is_toy() -> bool:
+	return usage == ItemUse.PLAYTHING

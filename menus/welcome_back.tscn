@@ -1,0 +1,102 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8sm1n4j0ir4w"]
+
+[ext_resource type="Theme" uid="uid://bjbh62daosxfr" path="res://menus/opaque_bg.tres" id="1_kdcs7"]
+[ext_resource type="Theme" uid="uid://dteq8ivqhl0rr" path="res://menus/background_color.tres" id="2_60w4q"]
+[ext_resource type="Script" uid="uid://b6iqk464rv10x" path="res://menus/welcome_back.gd" id="2_gtpj1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nqkm"]
+bg_color = Color(0.113297, 0.175781, 0.127453, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="welcome_back" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_60w4q")
+script = ExtResource("2_gtpj1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+localize_numeral_system = false
+theme = ExtResource("1_kdcs7")
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_kdcs7")
+
+[node name="Panel" type="Panel" parent="MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -300.0
+offset_right = 500.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4nqkm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 45.0
+offset_top = 20.0
+offset_right = -45.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_60w4q")
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/Panel/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Welcome Home!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/Panel/Panel/VBoxContainer"]
+texture_filter = 2
+layout_mode = 2
+text = "Here's what you found:"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Panel/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/Panel/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 12
+
+[node name="great!" type="Button" parent="MarginContainer/Panel/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 24
+text = "Great!"
+
+[connection signal="pressed" from="MarginContainer/Panel/Panel/VBoxContainer/great!" to="." method="_on_great_pressed"]
