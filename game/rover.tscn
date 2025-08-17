@@ -26,7 +26,7 @@ shader_parameter/screen_size = Vector2(1920, 1080)
 [sub_resource type="QuadMesh" id="QuadMesh_c4yco"]
 material = SubResource("ShaderMaterial_spr2s")
 
-[node name="Rover" type="Node3D"]
+[node name="RoverNode" type="Node3D"]
 
 [node name="Rover" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.100808, 0)
@@ -54,10 +54,10 @@ metadata/_edit_group_ = true
 transform = Transform3D(1, -6.93889e-17, -3.55271e-14, 0, 1, 0, 0, 0, 1, -1.37911e-09, -0.0419656, -0.0512249)
 
 [node name="LaserBarrel" type="Marker3D" parent="Rover/RoverCam/LaserBarrelStart"]
-transform = Transform3D(1, 6.93889e-17, 1.42109e-14, 0, 1, 0, 0, 0, 1, 7.7543e-09, -0.00024832, -0.021607)
+transform = Transform3D(1, -1.14908e-14, -6.39488e-14, 1.41276e-14, 1, 0, -1.42109e-14, 0, 1, 7.19507e-09, -0.00023438, -0.0152102)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Rover/RoverCam/LaserBarrelStart/LaserBarrel"]
-transform = Transform3D(1, 8.76132e-08, 8.72318e-08, -8.72318e-08, -4.37722e-08, 1, 8.76132e-08, -1, -4.37722e-08, 0, 0, 0.01)
+[node name="LaserGun" type="MeshInstance3D" parent="Rover/RoverCam/LaserBarrelStart/LaserBarrel"]
+transform = Transform3D(1, 8.76133e-08, 8.72318e-08, -8.72318e-08, -4.37722e-08, 1, 8.76133e-08, -1, -4.37722e-08, 1.42895e-09, -3.56622e-05, -0.00634503)
 mesh = SubResource("CylinderMesh_w1kh0")
 
 [node name="Timer" type="Timer" parent="Rover/RoverCam"]

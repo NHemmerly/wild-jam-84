@@ -40,5 +40,4 @@ func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, n
 	if Input.is_action_just_pressed("click") && active:
 		active = false
 		locked(false)
-		apply_impulse(Vector3(2, 2, 2)) # Replace with function body.
 		player_state.explore_inv.items.append(hidden_item)

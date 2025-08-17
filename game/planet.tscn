@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://crf4wlevu82d2"]
+[gd_scene load_steps=10 format=3 uid="uid://crf4wlevu82d2"]
 
 [ext_resource type="Script" uid="uid://8jj8pos5s05n" path="res://game/planet.gd" id="1_dyb3w"]
 [ext_resource type="Shader" uid="uid://ceqmf11nibv5b" path="res://game/starry_sky.gdshader" id="2_2e2cy"]
@@ -36,10 +36,6 @@ uv1_scale = Vector3(90, 90, 90)
 material = SubResource("StandardMaterial3D_xp6eh")
 size = Vector2(100, 100)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_yanxv"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_xp6eh"]
-
 [node name="Planet" type="Node3D"]
 script = ExtResource("1_dyb3w")
 
@@ -66,14 +62,5 @@ skeleton = NodePath("../CollisionShape3D")
 
 [node name="Spawnpoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000106752, 0.201781, 0.000308216)
-
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.978, 20.7481, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-shape = SubResource("BoxShape3D_yanxv")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
-mesh = SubResource("BoxMesh_xp6eh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
