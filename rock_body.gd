@@ -33,7 +33,7 @@ func locked(locked):
 
 
 func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
-	if InputEventMouseButton && event.pressed && event.button_index == MOUSE_BUTTON_LEFT:
-		print("aaaaa")
+	#if InputEventMouseButton && event.pressed() && event.button_index == MOUSE_BUTTON_LEFT:
+	if Input.is_action_just_pressed("click"):
 		locked(false)
-		apply_impulse(Vector3(100, 100, 100)) # Replace with function body.
+		apply_impulse(Vector3(2, 2, 2)) # Replace with function body.
