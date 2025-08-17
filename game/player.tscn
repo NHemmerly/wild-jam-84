@@ -29,7 +29,8 @@ script = SubResource("GDScript_p0vpi")
 [node name="held_item" type="Sprite2D" parent="layering"]
 z_index = 100
 y_sort_enabled = true
-scale = Vector2(0.75, 0.75)
+texture_filter = 1
+scale = Vector2(5, 5)
 
 [node name="batt_tick" type="Timer" parent="."]
 autostart = true
